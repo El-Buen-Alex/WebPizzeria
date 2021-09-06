@@ -10,6 +10,15 @@
         public function index(){
             require_once 'views/pedidos/pedidos.php';
         }
+        public function generarPedido(){
+           
+          $data = file_get_contents('php://input');
+          setcookie("listProducts", $data);
+          var_dump ($data);
+        }
+        public function mostrarListaProductos(){
+            require_once 'views/pedidos/pedidoGenerado.php';
+        }
     }
 
 ?>

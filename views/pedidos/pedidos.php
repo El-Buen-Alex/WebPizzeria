@@ -11,24 +11,26 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <body>
-<header>
-<?php
-require_once 'views/partials/header.php';
+    <header>
+    <?php
+        require_once 'views/partials/header.php';
     ?>
-</header>
+    </header>
     
     <div class="container">
+        <div id="errorContainer"></div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <h1 class="navbar-brand ps-2">Pide Ya!</h1>
-        <nav>  
+        </nav>  
         <div class="row">
             <div class="col-md-3 ">
                     <div class="card my-2">
                         <h2  class="bg-warning p-2">Pedidos</h2>   
-                        <form >
+                        <form onsubmit="" method="" action="">>
                             <div id="pedidosList" class="container overflow-scroll" style="max-height:50vh;"></div>
                             <div class="d-grid gap-2  p-2">
-                                <button type="button" class="btn btn-success">Comprar!</button>
+                                <div class="d-flex justify-content-between"><span>Total:</span><span id="totalPriceOfProducts"></span></div>
+                                <button type="button" class="btn btn-success" onclick="generarPedido()" >Comprar!</button>
                             </div>
                         </form> 
                     </div>
@@ -54,17 +56,17 @@ require_once 'views/partials/header.php';
                         </div>
                     </div>
             </div>
-
         </div>
     </div>
-    
-    
+
     <footer>
     <?php
         require_once 'views/partials/footer.php';
     ?>
     </footer>
+    
     <script src="assets/js/menuPedidos.js"></script>
     <script src="assets/js/generarPedido.js"></script>
+    
 </body>
 </html>
