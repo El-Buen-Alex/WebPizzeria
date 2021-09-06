@@ -58,13 +58,13 @@ require_once 'views/partials/header.php';
         </div>
     </div>
     
-    <script src="assets/js/menuPedidos.js"></script>
-    <script src="assets/js/generarPedido.js"></script>
+    
     <footer>
     <?php
         require_once 'views/partials/footer.php';
     ?>
     </footer>
-    
+    <script src="assets/js/menuPedidos.js"></script>
+    <script src="assets/js/generarPedido.js"></script>
 </body>
 </html>

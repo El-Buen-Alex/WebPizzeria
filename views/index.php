@@ -81,9 +81,7 @@
             <div id="jssor_1"
                 style="position:relative;margin:0 auto;top:0px;left:0px;width:960px;height:400px;overflow:hidden;visibility:hidden;">
                 <!-- Loading Screen -->
-                <div data-u="loading"
-                    style="position:absolute;top:0px;left:0px;background:url('assets/resources/img/loading.gif') no-repeat 50% 50%;background-color:rgba(0, 0, 0, 0.7);">
-                </div>
+               
 
                 <div data-u="slides"
                     style="cursor:default;position:relative;top:0px;left:0px;width:960px;height:400px;overflow:hidden;">

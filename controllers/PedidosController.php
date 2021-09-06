@@ -8,8 +8,6 @@
         }
 
         public function index(){
-
-
             require_once 'views/pedidos/pedidos.php';
         }
     }
