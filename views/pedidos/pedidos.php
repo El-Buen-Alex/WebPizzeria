@@ -15,6 +15,7 @@
         require_once 'views/partials/header.php';
     ?>
     <div class="container">
+        <div id="errorContainer"></div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <h1 class="navbar-brand ps-2">Pide Ya!</h1>
         </nav>  
@@ -22,10 +23,11 @@
             <div class="col-md-3 ">
                     <div class="card my-2">
                         <h2  class="bg-warning p-2">Pedidos</h2>   
-                        <form >
+                        <form onsubmit="" method="" action="">>
                             <div id="pedidosList" class="container overflow-scroll" style="max-height:50vh;"></div>
                             <div class="d-grid gap-2  p-2">
-                                <button type="button" class="btn btn-success">Comprar!</button>
+                                <div class="d-flex justify-content-between"><span>Total:</span><span id="totalPriceOfProducts"></span></div>
+                                <button type="button" class="btn btn-success" onclick="generarPedido()" >Comprar!</button>
                             </div>
                         </form> 
                     </div>
@@ -51,10 +53,8 @@
                         </div>
                     </div>
             </div>
-
         </div>
     </div>
-    
     
     <script src="views/pedidos/menuPedidos.js"></script>
     <script src="assets/pedidosAssets/generarPedido.js"></script>
