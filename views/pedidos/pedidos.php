@@ -11,14 +11,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <body>
-    <?php
-        require_once 'views/partials/header.php';
+<header>
+<?php
+require_once 'views/partials/header.php';
     ?>
+</header>
+    
     <div class="container">
         <div id="errorContainer"></div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <h1 class="navbar-brand ps-2">Pide Ya!</h1>
-        </nav>  
+        <nav>  
         <div class="row">
             <div class="col-md-3 ">
                     <div class="card my-2">
@@ -56,10 +59,13 @@
         </div>
     </div>
     
-    <script src="views/pedidos/menuPedidos.js"></script>
-    <script src="assets/pedidosAssets/generarPedido.js"></script>
+    <script src="assets/js/menuPedidos.js"></script>
+    <script src="assets/js/generarPedido.js"></script>
+    <footer>
     <?php
-        require_once 'views/partials/Footer/Footer.php';
+        require_once 'views/partials/footer.php';
     ?>
+    </footer>
+    
 </body>
 </html>

@@ -4,9 +4,6 @@
 require_once 'models/ProductoModel.php';
 
     class MenuController{
-
-         
-
         public function getProducts(){
             $pizza1= new Producto("resources/menu/Deluxe.png", 10, "Pizza Deluxe", "pizza");
             $pizza2= new Producto("resources/menu/Extra.png", 7, "Pizza Extra", "pizza");

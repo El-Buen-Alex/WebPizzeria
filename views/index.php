@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="keywords" content="Pizza, Mellisos, Pizzería"/>
     <title>Pizza Mellisos | Inicio</title>
-    <link rel="stylesheet" href="assets/estilos.css" />
+    <link rel="stylesheet" href="assets/styles/styles.css" />
     <style media="screen">
     </style>
 </head>
