@@ -14,47 +14,50 @@
     <?php
         require_once 'views/partials/header.php';
     ?>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-         <h1 class="navbar-brand ps-2">Pide Ya!</h1>
-    </nav>  
-    <div class="row">
-        <div class="col-md-3 ">
-                <div class="card my-2">
-                    <h2  class="bg-warning p-2">Pedidos</h2>   
-                    <form id="pedidosList">
-
-                        <div class="d-grid gap-2">
-                            <button type="button" class="btn btn-success">Comprar!</button>
-                        </div>
-                    </form> 
-                </div>
-        </div>
-        <div class="col-md-9">
-            <div class="container">
-                <div class="card my-2">
-                    <div><h2 class="bg-warning p-2">Pizzas</h2></div>
-                    <div class="card-body "> 
-                        <div class="row" id="pizzasMenu"></div>
+    <div class="container">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <h1 class="navbar-brand ps-2">Pide Ya!</h1>
+        </nav>  
+        <div class="row">
+            <div class="col-md-3 ">
+                    <div class="card my-2">
+                        <h2  class="bg-warning p-2">Pedidos</h2>   
+                        <form >
+                            <div id="pedidosList" class="container overflow-scroll" style="max-height:50vh;"></div>
+                            <div class="d-grid gap-2  p-2">
+                                <button type="button" class="btn btn-success">Comprar!</button>
+                            </div>
+                        </form> 
                     </div>
-                </div>
-                <div class="card my-2">
-                    <div><h2 class="bg-warning p-2">Pollo</h2></div>
-                    <div class="card-body "> 
-                        <div class="row" id="polloMenu"></div>
-                    </div>
-                </div>
-                <div class="card my-2">
-                    <div><h2 class="bg-warning p-2">Sandiwch</h2></div>
-                    <div class="card-body "> 
-                        <div class="row" id="sandwichMenu"></div>
-                    </div>
-                </div>
             </div>
-        </div>
+            <div class="col-md-9">
+                
+                    <div class="card my-2">
+                        <div><h2 class="bg-warning p-2">Pizzas</h2></div>
+                        <div class="card-body "> 
+                            <div class="row" id="pizzasMenu"></div>
+                        </div>
+                    </div>
+                    <div class="card my-2">
+                        <div><h2 class="bg-warning p-2">Pollo</h2></div>
+                        <div class="card-body "> 
+                            <div class="row" id="polloMenu"></div>
+                        </div>
+                    </div>
+                    <div class="card my-2">
+                        <div><h2 class="bg-warning p-2">Sandiwch</h2></div>
+                        <div class="card-body "> 
+                            <div class="row" id="sandwichMenu"></div>
+                        </div>
+                    </div>
+            </div>
 
+        </div>
     </div>
     
+    
     <script src="views/pedidos/menuPedidos.js"></script>
+    <script src="assets/pedidosAssets/generarPedido.js"></script>
     <?php
         require_once 'views/partials/Footer/Footer.php';
     ?>

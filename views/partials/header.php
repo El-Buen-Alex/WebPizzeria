@@ -10,6 +10,8 @@
                 <a class="enlace" href="#">Inicio |</a>
                 <a class="enlace" href="#">Pedidos |</a>
                 <a class="enlace" href="#">Reservas |</a>
+                <a class="enlace" href="assets/loginAssets/closeSession.php">Cerrar Sesion |</a>
+                <a class="enlace" href="assets/loginAssets/startSession.php">iniciar Sesion |</a>
             </div>
 
             <div class="nav_botones">

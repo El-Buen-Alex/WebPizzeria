@@ -1,6 +1,6 @@
 
 const divOfProducts=document.getElementById('pedidosList');
-const listOfProducts=[];
+let listOfProducts=[];
 const divPizzas=document.getElementById('pizzasMenu');
 const divPollos=document.getElementById('polloMenu');
 const divSandwich=document.getElementById('sandwichMenu');
@@ -63,8 +63,9 @@ function createElement(element){
 
     const button=document.createElement("button");
     button.setAttribute("type","button");
-    button.setAttribute("onClick","addProductOfList()");
-    button.setAttribute("class","btn btn-primary btn-lg btn-block center-block");
+    button.setAttribute("onClick","agregarPedido()")
+    //button.setAttribute("onClick","addProductOfList()");
+    button.setAttribute("class","btn btn-primary btn-lg btn-block center-block button");
     button.innerHTML="PEDIR AHORA";
 
     const divButton=document.createElement("div");
@@ -91,6 +92,7 @@ function addProductOfList(){
     listOfProducts.forEach(element=>{
         if(element.name===nameProduct){
             element.cant=+element.cant+1;
+            repaintElements();
             existe=true;
         }
     })
@@ -103,19 +105,23 @@ function addProductOfList(){
 
 function buildProductItem(cant, name){
     const divPrincipal=document.createElement("div");
-    divPrincipal.setAttribute("class", "row")
+    divPrincipal.setAttribute("class", "mb-2 row w-100 shadow bg-white rounded item")
 
     const pname=document.createElement("p");
-    pname.setAttribute("class","col-md-8")
+    pname.setAttribute("class","col-md-7")
     pname.innerHTML=name;
 
     const inputCant=document.createElement("input");
     inputCant.setAttribute("value",cant )
     inputCant.setAttribute("type","number");
-    inputCant.setAttribute("class","col-md-2")
+    inputCant.setAttribute("class","col-md-3")
+    inputCant.setAttribute("id",name)
+    inputCant.setAttribute("onChange","updateValue()")
 
     const buttonQuitar=document.createElement("button");
-    buttonQuitar.setAttribute("class", "btn btn-light col-md-2");
+    buttonQuitar.setAttribute("class", "btn btn-light col-md-2 ");
+    buttonQuitar.setAttribute("type", "button");
+    buttonQuitar.setAttribute("onClick","removeItem()")
     buttonQuitar.innerHTML="X";
 
     divPrincipal.appendChild(buttonQuitar)
@@ -123,4 +129,32 @@ function buildProductItem(cant, name){
     divPrincipal.appendChild(inputCant)
     
     divOfProducts.appendChild(divPrincipal);
+}
+function updateValue(){
+    const nameProduct=(event.target.id);
+    listOfProducts.forEach(element=>{
+        if(element.name===nameProduct){
+            element.cant=event.target.value;
+        }
+    })
+    repaintElements();
+}
+
+function removeChilds(){
+    const elements=document.querySelectorAll(".item");
+    elements.forEach(element=>{
+        element.remove();
+    })
+}
+
+function removeItem(){
+    const nameProduct=event.target.nextElementSibling.innerHTML;
+    listOfProducts=listOfProducts.filter(element => element.name!==nameProduct)
+    repaintElements();
+}
+function repaintElements(){
+    removeChilds();
+    listOfProducts.forEach(element=>{
+        buildProductItem(element.cant, element.name)
+    })
 }
