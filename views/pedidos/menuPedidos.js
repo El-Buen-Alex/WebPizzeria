@@ -98,7 +98,7 @@ function addProductOfList(){
     })
     if(!existe){
         listOfProducts.push({"name": nameProduct, "price": priceProduct, "cant":1});
-        repaintElements()
+        buildProductItem(1, nameProduct);
     }
     console.log(listOfProducts);
 }
@@ -152,16 +152,9 @@ function removeItem(){
     listOfProducts=listOfProducts.filter(element => element.name!==nameProduct)
     repaintElements();
 }
-
 function repaintElements(){
     removeChilds();
-    cleanAlertsError();
-    let total=+0;
     listOfProducts.forEach(element=>{
-        total+= (+element.price * +element.cant);
         buildProductItem(element.cant, element.name)
     })
-    const spanPrice=document.getElementById("totalPriceOfProducts");
-    console.log(spanPrice);
-    spanPrice.innerHTML="$"+total;
 }

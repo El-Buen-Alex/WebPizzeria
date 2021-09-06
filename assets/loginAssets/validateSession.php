@@ -1,8 +1,8 @@
 <?php
     session_start();
-    $sessionRol="0";
-    if(isset($_SESSION["usuario"])){
-        $sessionRol=$_SESSION["usuario"]["1"]["rol"];
+    $sessionExists=false;
+    if(isset($_SESSION["user_id"]) && isset($_SESSION["user_name"])){
+        $sessionExists=true;
     }
-    echo $sessionRol;
+    echo $sessionExists;
 ?>
