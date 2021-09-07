@@ -21,7 +21,7 @@
       <div class="signin-signup">
 
 
-        <form class="sign-in-form formLocal" id="form" action="menu.html">
+        <form class="sign-in-form formLocal" id="form" action="index.php?c=usuarios&a=index" method="POST">
           <h2 style="color: #b36105; font-family: Bookman Old Style;">Ingrese los datos</h2>
           <br>
 
@@ -173,7 +173,7 @@
     ?>
   </footer>
   <script src="assets/js/app.js"></script>
-  <script src="assets/js/validarLoginRegister.js"></script>
+  <script src="assets/js/validarFormLogReg.js"></script>
 </body>
 
 </html>

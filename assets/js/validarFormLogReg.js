@@ -151,7 +151,6 @@ formulario2.addEventListener("submit", (e) => {
     campos.correo2 &&
     campos.telefono2
   ) {
-    formulario2.reset();
     document
       .getElementById("formulario__mensaje-exito2")
       .classList.add("formulario__mensaje-exito-activo");
@@ -181,12 +180,9 @@ formulario2.addEventListener("submit", (e) => {
 });
 
 /* valida login */
-var botonInicia = document.getElementById("botonIniciar");
-botonInicia.addEventListener("click", (e) => {
+formulario.addEventListener("submit", (e) => {
   // noVacio = document.getElementById(noVacio).value; (noVacio.length==0 || /ˆ\s+$/.test(noVacio)
   if (campos.usuario && campos.password) {
-    formulario.reset();
-    window.open("/index.html", "_self");
   } else {
     e.preventDefault();
 

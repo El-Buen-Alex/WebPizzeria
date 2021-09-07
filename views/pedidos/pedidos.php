@@ -1,4 +1,14 @@
-
+<?php
+     session_start();
+     if(!isset($_SESSION["rol"])){
+         header("location: index.php?c=logreg&a=index");
+     }else{
+         if($_SESSION["rol"] == 1){
+            header("location: index.php?c=logreg&a=index");
+     }else{
+         }
+     }
+?>
 
 <!DOCTYPE html>
 <html lang="en">
