@@ -25,6 +25,21 @@ class UsuariosModel {
         $usuario = $stmt->fetch(PDO::FETCH_NUM);
         return $usuario;
     }
+
+    public function buscarUsuarioPorId($id){
+        $sql="select * from usuario where idUsuario = :id";
+        $sentencia = $this->con->prepare($sql);
+        //binding parameters
+        $data=[
+            'id' => $id
+        ];
+        //execute
+        $sentencia->execute($data);
+        //retornar resultados
+        $resultados = $sentencia->fetch(PDO::FETCH_OBJ);
+        
+       return $resultados;
+    }
         
 }
     

@@ -1,5 +1,5 @@
 const divOfProducts = document.getElementById("pedidosList");
-let listOfProducts = [];
+
 const divPizzas = document.getElementById("pizzasMenu");
 const divPollos = document.getElementById("polloMenu");
 const divSandwich = document.getElementById("sandwichMenu");
@@ -159,13 +159,15 @@ function removeItem() {
 }
 
 function repaintElements() {
-  removeChilds();
-  cleanAlertsError();
-  let total = +0;
-  listOfProducts.forEach((element) => {
-    total += +element.price * +element.cant;
-    buildProductItem(element.cant, element.name);
-  });
+    removeChilds();
+    cleanAlertsError();
+    sendDataToServer();
+    let total = +0;
+    listOfProducts.forEach((element) => {
+      total += +element.price * +element.cant;
+      buildProductItem(element.cant, element.name);
+    }
+  );
   const spanPrice = document.getElementById("totalPriceOfProducts");
   console.log(spanPrice);
   spanPrice.innerHTML = "$" + total;

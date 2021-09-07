@@ -1,9 +1,3 @@
-<?php
-     if(!isset($_SESSION["usuario"])){
-         header("location: index.php?c=logreg&a=index");
-     }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +64,9 @@
     </footer>
     
     <script src="assets/js/menuPedidos.js"></script>
+    
     <script src="assets/js/generarPedido.js"></script>
+    <script src="assets/js/llenarListaProductos.js"></script>
     
 </body>
 </html>
