@@ -29,15 +29,15 @@
         <div class="row">
             <div class="col-md-4 px-0 border border-light">
                 <p class="d-flex justify-content-center  bg-warning bg-gradient">Nombre</p>
-                <p class="d-flex justify-content-center" id="nombre"></p>
+                <p class="d-flex justify-content-center" id="nombre"><?php echo $user->nombre?></p>
             </div>
             <div class="col-md-4 px-0">
-                <p class="d-flex justify-content-center bg-warning bg-gradient border border-light">Cedula</p>
-                <p class="d-flex justify-content-center" id="cedula"></p>
+                <p class="d-flex justify-content-center bg-warning bg-gradient border border-light">Telefono</p>
+                <p class="d-flex justify-content-center" id="cedula"><?php echo $user->telefono?></p>
             </div>
             <div class="col-md-4 px-0">
                 <p class="d-flex justify-content-center bg-warning bg-gradient border border-light">Correo</p>
-                <p class="d-flex justify-content-center" id="correo"></p>
+                <p class="d-flex justify-content-center" id="correo"><?php echo $user->Correo?></p>
             </div>
         </div>
         <div class="row">
@@ -54,7 +54,10 @@
                             <label class="form-check-label" for="flexRadioDefault2">En Sucursal</label>
                         </div>
                     </div>
-                    <div class="col-md-8" id="direction"></div>
+                    <div class="col-md-8" >
+                        <div id="direction"></div>
+                        <div class="d-flex justify-content-center"><?php echo $user->direccion?> </div>
+                    </div>
                 </div>
             </div>
         </div>
