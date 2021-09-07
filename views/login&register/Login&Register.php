@@ -11,11 +11,10 @@
 
 <body>
   <header>
-    <div id="nav-placeholder1"> </div>
-    <script src="//code.jquery.com/jquery.min.js"></script>
-    <script>$.get("header.html", function (data) {
-        $("#nav-placeholder1").replaceWith(data);
-      });</script>
+
+    <?php
+       require_once "views/partials/header.php";
+    ?>
   </header>
   <div class="container">
     <div class="forms-container">
@@ -167,16 +166,12 @@
     </div>
   </div>
 
-  <script src="../html_pages/js/app.js"></script>
+  <script src="assets/js/app.js"></script>
   <script src="assets/js/validarLoginRegister.js"></script>
   <footer>
-    <div id="nav-placeholder2"> </div>
-
-    <script src="//code.jquery.com/jquery.min.js"></script>
-
-    <script>$.get("footer.html", function (data) {
-        $("#nav-placeholder2").replaceWith(data);
-      });</script>
+    <?php
+       require_once "views/partials/footer.php";
+    ?>
   </footer>
 </body>
 
