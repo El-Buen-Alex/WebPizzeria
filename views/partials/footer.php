@@ -1,6 +1,8 @@
 <!-- Adriana Zambrano Manzano -->
 <!-- Footer -->
-
+<?php
+     session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -21,7 +23,8 @@
                     <img style="width:190px; height: 150px;" src="assets/resources/logo.png" alt="logo">
                 </div>
 
-                <nav>
+                <?php if(!isset($_SESSION["usuario"])) { ?>
+                <<nav>
                     <div class="nav_enlaces_pie">
                         <div style="text-align:center;">
                             <a class="enlace" href="index.php?c=pedidos">Menú |</a>
@@ -29,6 +32,27 @@
                         </div>
                     </div>
                 </nav>
+            <?php } else {  ?>
+                <?php if($_SESSION["usuario"]["rol"] == 1){ ?>
+                <<nav>
+                    <div class="nav_enlaces_pie">
+                        <div style="text-align:center;">
+                            <a class="enlace" href="index.php?c=admin">Admin </a>
+                        </div>
+                    </div>
+                </nav>
+                <?php } else { ?>
+                    <nav>
+                    <div class="nav_enlaces_pie">
+                        <div style="text-align:center;">
+                            <a class="enlace" href="index.php?c=pedidos">Menú |</a>
+                            <a class="enlace" href="/html_pages/reservas.html">Reservas |</a>
+                        </div>
+                    </div>
+                </nav>
+                <?php }
+                }?>       
+
 
                 <div class="redes" style="margin-top: 30px; margin-bottom: 30px;">
                     <div style="text-align: center;">

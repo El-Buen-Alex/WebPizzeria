@@ -1,5 +1,4 @@
 <?php
-
 require_once 'config/config.php';
 $cont= isset($_REQUEST['c'])?htmlentities($_REQUEST['c']):CONTROLADOR_PRINCIPAL;
 $accion =isset($_REQUEST['a'])?htmlentities($_REQUEST['a']):ACCION_PRINCIPAL;

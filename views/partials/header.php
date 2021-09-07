@@ -1,6 +1,8 @@
 <!-- Adriana Zambrano Manzano -->
 <!-- Header -->
-
+<?php
+     session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -20,15 +22,37 @@
                 <h1 class="celular">0980856681</h1>
             </div>
 
-            <div class="nav_enlaces">
+
+            <?php if(!isset($_SESSION["usuario"])) { ?>
+                <div class="nav_enlaces">
+                <a class="enlace" href="index.php?c=pizzeria&a=index">Inicio |</a>
+                <a class="enlace" href="index.php?c=pedidos">Menú |</a>
+                <a class="enlace" href="/html_pages/reservas.html">Reservas</a>
+                </div>
+
+                <div class="nav_botones">
+                <a class="botonesInicio" href="index.php?c=logreg">Accede o Registrate</a>
+                </div>
+            <?php } else {  ?>
+                <?php if($_SESSION["usuario"]["rol"] == 1){ ?>
+                <div class="nav_enlaces">
+                <a class="enlace" href="index.php">Inicio |</a>
+                <a class="enlace" href="index.php?c=admin">Admin </a>
+                </div>
+                <div class="nav_botones">
+                <a class="botonesInicio" href="index.php?c=usuarios&a=cerrarSesion">Cerrar sesión</a>
+                </div>
+                <?php } else { ?>
+                <div class="nav_enlaces">
                 <a class="enlace" href="index.php">Inicio |</a>
                 <a class="enlace" href="index.php?c=pedidos">Menú |</a>
                 <a class="enlace" href="/html_pages/reservas.html">Reservas</a>
-            </div>
-
-            <div class="nav_botones">
-                <a class="botonesInicio" href="index.php?c=logreg">Accede con tu cuenta</a>
-            </div>
+                </div>
+                <div class="nav_botones">
+                <a class="botonesInicio" href="index.php?c=usuarios&a=cerrarSesion">Cerrar sesión</a>
+                </div>
+                <?php }
+                }?>             
         </nav>
     </header>
 </body>
