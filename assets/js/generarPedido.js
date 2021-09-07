@@ -18,23 +18,19 @@ ajax_request_.open("GET", ajax_url_, true);
 ajax_request_.send();
 
 function agregarPedido() {
-    console.log(response);
     addProductOfList();
 }
 function generarPedido() {
   let resp = false;
   if (response == 2) {
     if (listOfProducts.length > 0) {
-      console.log(listOfProducts.length);
       sendDataToServer();
       resp = true;
     } else {
       buildAlert("alert-warning", "Debe seleccionar productos");
-      console.log("no hay productos en el carrito");
     }
   } else {
     buildAlert("alert-danger", "debe iniciar sesion");
-    console.log("debe iniciar sesion");
   }
   return resp;
 }
@@ -67,8 +63,6 @@ function sendDataToServer() {
     // readyState es 4
     if (ajax_request.readyState == 4) {
       // Analizaos el responseText que contendrá el JSON enviado desde el servidor
-      console.log(ajx_request_.responseText);
-
       // La variable jsonObj ahora contiene un objeto con los datos recibidos
     }
   };
@@ -79,6 +73,5 @@ function sendDataToServer() {
     "application/json; charset=UTF-8"
   );
   // Enviar la solicitud
-  console.log(myjson);
   ajx_request_.send(myjson);
 }

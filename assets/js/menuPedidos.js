@@ -82,7 +82,6 @@ function createElement(element) {
 
 function addProductOfList() {
   const divPadre = event.target.parentNode.parentNode;
-  console.log(divPadre);
   const divprecio = divPadre.firstChild.nextSibling;
   const priceProduct = divprecio.getAttribute("value");
   const divNameProduct = divprecio.nextSibling;
@@ -100,7 +99,6 @@ function addProductOfList() {
     listOfProducts.push({ name: nameProduct, price: priceProduct, cant: 1 });
     repaintElements();
   }
-  console.log(listOfProducts);
 }
 
 function buildProductItem(cant, name) {
@@ -169,6 +167,5 @@ function repaintElements() {
     }
   );
   const spanPrice = document.getElementById("totalPriceOfProducts");
-  console.log(spanPrice);
   spanPrice.innerHTML = "$" + total;
 }

@@ -44,7 +44,6 @@ function getEstablecimientos(){
     if (ajaxR.readyState == 4) {
         // Analizaos el responseText que contendrá el JSON enviado desde el servidor
         var jsonResp = JSON.parse(ajaxR.responseText);
-        console.log(jsonResp)
         buildSelectDirection(jsonResp);
         // La variable jsonObj ahora contiene un objeto con los datos recibidos
     }
