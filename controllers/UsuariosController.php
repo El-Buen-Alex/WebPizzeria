@@ -16,23 +16,45 @@ class UsuariosController {
         $pass = htmlentities($_POST['password']);
         
         //llamar al modelo
-        $exito = $this->model->validarUsuario($user, $pass);
-        if (!$exito) {
+        $usuario = $this->model->buscarUsuario($user, $pass);
+
+        if ($usuario == false) {
             require_once "views/login&register/Login&Register.php";
             echo '<script language="javascript">alert("Usuario y/o contraseña incorrectos");</script>';            
         }else{
-            switch ($_SESSION['rol']) {
-                case 1:
-                    header("location: index.php?c=admin&a=index");
-                    break;
-                
-                case 2:
-                    header("location: index.php");
-                    break;
-            }
-        }
+            echo "entre";
             
+
+        }       
+    }
+
+    public function crearSession() {
+echo "entre";
+        // $id = $usuario[0];
+        // $nombre = $usuario[1];
+        // $rol = $usuario[8];
+
+        // $_SESSION["usuario"]["id"] = $id;
+        // $idUser =  $_SESSION["usuario"]["id"];
+
+        // $_SESSION["usuario"]["rol"] = $rol;
+        // $rolUser =  $_SESSION["usuario"]["rol"];
+
+        // redirigirRol($rolUser);
+    }
+
+    public function redirigirRol($rolUser) {
+        switch ($rolUser) {
+            case 1:
+                header("location: index.php?c=admin&a=index");
+                break;
+            
+            case 2:
+                header("location: index.php");
+                break;
         }
     }
+}
+    
     
 
