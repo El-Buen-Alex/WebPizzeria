@@ -19,6 +19,12 @@
         public function mostrarListaProductos(){
             require_once 'views/pedidos/pedidoGenerado.php';
         }
+        public function getListOfProducts(){
+            if(isset($_COOKIE['listProducts'])){
+                $data=$_COOKIE['listProducts'];
+                echo $data;
+            }
+        }
     }
 
 ?>
