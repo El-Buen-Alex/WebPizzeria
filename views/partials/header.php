@@ -1,8 +1,5 @@
 <!-- Adriana Zambrano Manzano -->
 <!-- Header -->
-<?php
-     session_start();
-?>
 <!DOCTYPE html>
 <html lang="es">
 

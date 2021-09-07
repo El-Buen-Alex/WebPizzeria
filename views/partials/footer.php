@@ -1,21 +1,6 @@
 <!-- Adriana Zambrano Manzano -->
 <!-- Footer -->
-<?php
-     session_start();
-?>
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="keywords" content="Pizza, Mellisos, Pizzería" />
-    <title>Pie de Página</title>
-    <link rel="stylesheet" href="assets/styles/styles.css" />
-    <style media="screen">
-    </style>
-</head>
-
-<body>
     <footer style="width: 100%;">
         <div class="footer_principal">
             <div class="logo">
@@ -79,7 +64,3 @@
             </div>
         </div>
     </footer>
-
-</body>
-
-</html>
