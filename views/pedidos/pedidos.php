@@ -26,11 +26,11 @@
             <div class="col-md-3 ">
                     <div class="card my-2">
                         <h2  class="bg-warning p-2">Pedidos</h2>   
-                        <form onsubmit="" method="" action="">>
+                        <form onsubmit="return generarPedido()" method="post" action="index.php?c=pedidos&a=mostrarListaProductos">
                             <div id="pedidosList" class="container overflow-scroll" style="max-height:50vh;"></div>
                             <div class="d-grid gap-2  p-2">
                                 <div class="d-flex justify-content-between"><span>Total:</span><span id="totalPriceOfProducts"></span></div>
-                                <button type="button" class="btn btn-success" onclick="generarPedido()" >Comprar!</button>
+                                <button type="submit" class="btn btn-success"  >Comprar!</button>
                             </div>
                         </form> 
                     </div>
