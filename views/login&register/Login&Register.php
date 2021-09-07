@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://kit.fontawesome.com/64d58efce2.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../css/estilos.css" />
+  <link rel="stylesheet" href="assets/styles/styles.css" />
   <title>Accede como usuario</title>
 </head>
 
@@ -16,8 +16,8 @@
        require_once "views/partials/header.php";
     ?>
   </header>
-  <div class="container">
-    <div class="forms-container">
+  <div class="containerr">
+    <div class="forms-containerr">
       <div class="signin-signup">
 
 
@@ -138,7 +138,7 @@
       </div>
     </div>
 
-    <div class="panels-container">
+    <div class="panels-containerr">
       <div class="panel left-panel">
         <div class="content">
           <h3>¿No tienes cuenta?</h3>
@@ -149,7 +149,7 @@
             Registrarse
           </button>
         </div>
-        <img src="../resources/logo.png" class="image" alt="" />
+        <img src="assets/resources/logo.png" class="image" alt="" />
       </div>
       <div class="panel right-panel">
         <div class="content">
@@ -161,18 +161,19 @@
             Iniciar sesión
           </button>
         </div>
-        <img src="../resources/logo.png" class="image" alt="" />
+        <img src="assets/resources/logo.png" class="image" alt="" />
       </div>
     </div>
   </div>
 
-  <script src="assets/js/app.js"></script>
-  <script src="assets/js/validarLoginRegister.js"></script>
+  
   <footer>
     <?php
        require_once "views/partials/footer.php";
     ?>
   </footer>
+  <script src="assets/js/app.js"></script>
+  <script src="assets/js/validarLoginRegister.js"></script>
 </body>
 
 </html>

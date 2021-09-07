@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Encabezado</title>
-    <link rel="stylesheet" href="assets/styles/estilosHeader.css" />
+    <link rel="stylesheet" href="assets/styles/styles.css" />
     <style media="screen">
     </style>
 </head>
@@ -27,7 +27,7 @@
             </div>
 
             <div class="nav_botones">
-                <a class="botonesInicio" href="/html_pages/Login&Register.html">Accede con tu cuenta</a>
+                <a class="botonesInicio" href="index.php?c=logreg">Accede con tu cuenta</a>
             </div>
         </nav>
     </header>
