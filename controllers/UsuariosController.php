@@ -46,6 +46,7 @@ class UsuariosController {
 
         $this->redirigirRol($rolUser);
     }
+    
 
     public function redirigirRol($rolUser) {
         switch ($rolUser) {
@@ -54,10 +55,15 @@ class UsuariosController {
                 break;
             
             case 2:
-                header("location: index.php");
+                header("location: index.php?c=pedidos&a=index");
                 break;
         }
     }
+
+    public function cerrarSesion() {
+        session_destroy();
+        header("location: index.php");
+   }
 }
     
     
