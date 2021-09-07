@@ -1,7 +1,8 @@
 <?php
 session_start();
     require_once 'models/PedidosModel.php';
-
+    require_once 'models/UsuariosModel.php';
+    require_once 'models/EstablecimientoModel.php';
     class PedidosController{
         private $model;
         public function __construct() {
@@ -18,6 +19,11 @@ session_start();
           var_dump ($data);
         }
         public function mostrarListaProductos(){
+            $modelUser=new UsuariosModel();
+            if(isset($_SESSION["usuario"])){
+                $userId=$_SESSION["usuario"]["id"];
+                $user=$modelUser->buscarUsuarioPorId($userId);
+            }
             require_once 'views/pedidos/pedidoGenerado.php';
         }
         public function getListOfProducts(){
@@ -25,6 +31,11 @@ session_start();
                 $data=$_COOKIE['listProducts'];
                 echo $data;
             }
+        }
+        public function getEstablecimientos(){
+            $modelEst= new EstablecimientoModel();
+            $establecimientos=$modelEst->getEstablecimientos();
+            echo json_encode( $establecimientos);
         }
     }
 
