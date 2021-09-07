@@ -1,5 +1,5 @@
 var response;
-var ajax_url_ = "assets/loginAssets/validateSession.php";
+var ajax_url_ = "index.php?c=usuarios&a=validarExisteSession";
 var ajax_request_ = new XMLHttpRequest();
 // Definimos una función a ejecutar cuándo la solicitud Ajax tiene alguna información
 ajax_request_.onreadystatechange = function () {
@@ -18,16 +18,12 @@ ajax_request_.open("GET", ajax_url_, true);
 ajax_request_.send();
 
 function agregarPedido() {
-  if (response === "cliente") {
     console.log(response);
     addProductOfList();
-  } else {
-    buildAlert("alert-danger", "debe iniciar sesion");
-  }
 }
 function generarPedido() {
   let resp = false;
-  if (response === "cliente") {
+  if (response == 2) {
     if (listOfProducts.length > 0) {
       console.log(listOfProducts.length);
       sendDataToServer();
