@@ -1,17 +1,6 @@
 <!-- Adriana Zambrano Manzano -->
 <!-- Header -->
-<!DOCTYPE html>
-<html lang="es">
 
-<head>
-    <meta charset="UTF-8">
-    <title>Encabezado</title>
-    <link rel="stylesheet" href="assets/styles/styles.css" />
-    <style media="screen">
-    </style>
-</head>
-
-<body>
     <header>
         <nav class="menu orange">
             <div class="nav_logo">
@@ -54,6 +43,3 @@
                 }?>             
         </nav>
     </header>
-</body>
-
-</html>
