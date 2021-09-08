@@ -1,5 +1,6 @@
 const inputsRadio=document.getElementsByName("flexRadioDefault");
-
+const divDireccion=document.getElementById("direction");
+const inputDirection= document.getElementById("user_input_direction");
 //solcitar lista de productos
 var response;
 var ajax_url_ = "index.php?c=pedidos&a=getListOfProducts";
@@ -24,16 +25,20 @@ ajax_request_.send();
 
 //evento que controla la eleccion de direccion
 inputsRadio.forEach(input=>{
+   
     input.addEventListener("change", function (e){
         const selects=document.querySelectorAll(".choseDirection");
         if(e.target.id==="flexRadioDefault1"){
             eliminarSelectDirection(selects);
+            divDireccion.innerHTML=dirUser;
+            inputDirection.value=dirUser;
         }else if(e.target.id==="flexRadioDefault2"){
             if(selects.length===0){
                 getEstablecimientos();
             }
         }
     })
+    console.log(inputDirection)
 })
 
 function getEstablecimientos(){
@@ -56,13 +61,28 @@ function getEstablecimientos(){
     ajaxR.send();
     
 }
+var dateControl = document.querySelector('input[type="date"]');
+const tiempoTranscurrido = Date.now();
+const hoy = new Date(tiempoTranscurrido);
+var mes = hoy.getMonth()+1; //obteniendo mes
+var dia = hoy.getDate(); //obteniendo dia
+var ano = hoy.getFullYear(); //obteniendo año
+if(dia<10)
+  dia='0'+dia; //agrega cero si el menor de 10
+if(mes<10)
+  mes='0'+mes //agrega cero si el menor de 10
+const fechaFormat=ano+"-"+mes+"-"+dia;
+dateControl.value = fechaFormat ;
+dateControl.min=fechaFormat;
 
+console.log(dateControl.value);
 function  buildSelectDirection(jsonEstablecimientos){
-    const divDirection=document.getElementById("direction");
+    const divDirection=document.getElementById("directionSelect");
     const select=document.createElement("select");
     select.setAttribute("class","form-select choseDirection");
     select.setAttribute("aria-label","Default select example");
-
+    select.setAttribute("onChange","changeDirection()");
+    select.required=true;
     const option=document.createElement("option");
     option.setAttribute("class","choseDirection");
     option.innerHTML="Elija la sucursal";
@@ -86,6 +106,12 @@ function eliminarSelectDirection(selects){
         elements.remove();
     })
 }
+
+function changeDirection(){
+    divDireccion.innerHTML=event.target.value;
+    inputDirection.value=event.target.value;
+}
+
 function paintProducts(jsonProducts){
     let total=+0;
     jsonProducts.forEach(product=>{
@@ -136,10 +162,7 @@ function createTableTotal(SubTotal){
     thDesgloce.appendChild(trTotal);
     tr.appendChild(th);
     tr.appendChild(thDesgloce);
-    bodyTable.appendChild(tr);
-
-    
-    
+    bodyTable.appendChild(tr); 
 }
 
 function buildBodyTableItem(cant, name, price){

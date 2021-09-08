@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PEDIDO | PIZZERIA</title>
-
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 </head>
 <body>
@@ -53,8 +53,12 @@
                         </div>
                     </div>
                     <div class="col-md-8" >
-                        <div id="direction"></div>
-                        <div class="d-flex justify-content-center"><?php echo $user->direccion?> </div>
+                        <?php $direccion=$user->direccion?>
+                        <script>
+                                let dirUser="<?php echo $direccion;?>"
+                        </script>
+                        <div id=directionSelect></div>
+                        <div class="d-flex justify-content-start" id="direction"><?php echo $user->direccion?></div>
                     </div>
                 </div>
             </div>
@@ -70,6 +74,28 @@
             </thead>
             <tbody id="bodyTable"></tbody>
          </table>
+         <form  method="post" action="index.php?c=pedidos&a=guardarCompra" name="formCompra">
+                <div class="row">
+                    <div id="time" class="d-flex justify-content-end col-md-6">
+                        <label for="meeting-time" class="mx-2">Dia de entrega:</label>
+                        <input type="date" id="meeting-time"
+                            name="date" required>
+                    </div>
+                    <div class="d-flex justify-content-start col-md-6">
+                        <label for="time" class="mx-2"> Hora de entrega:</label>
+                        <input type="time" id="timet" name="time"
+                             min="09:00" max="18:00" required>
+                    </div>
+                </div>
+        
+            <div class="d-flex justify-content-center my-2">
+                <input id="user_input_direction" name="user_direction" type="hidden" value="<?php echo $user->direccion ;?>">
+                <input id="userid" name="user_id" type="hidden" value="<?php echo $user->idUsuario ;?>">
+                <a class="btn btn-primary mx-2" href="index.php?c=pedidos" role="button">Volver a Elegir</a>
+                <button class="btn btn-success mx-2" type="submit" name="buttonCompra">Ordenar!</button>
+            </div>
+            
+         </form>
     </main>
 <script src="assets/js/pedidoGenerado.js"></script>
     <?php

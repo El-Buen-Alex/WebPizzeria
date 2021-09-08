@@ -18,6 +18,7 @@ session_start();
           setcookie("listProducts", $data);
           var_dump ($data);
         }
+
         public function mostrarListaProductos(){
             $modelUser=new UsuariosModel();
             if(isset($_SESSION["usuario"])){
@@ -26,17 +27,65 @@ session_start();
             }
             require_once 'views/pedidos/pedidoGenerado.php';
         }
+
         public function getListOfProducts(){
             if(isset($_COOKIE['listProducts'])){
                 $data=$_COOKIE['listProducts'];
                 echo $data;
             }
         }
+
         public function getEstablecimientos(){
             $modelEst= new EstablecimientoModel();
             $establecimientos=$modelEst->getEstablecimientos();
             echo json_encode( $establecimientos);
         }
+
+        public function guardarCompra(){
+            if(isset($_COOKIE['listProducts'])){
+                if(isset($_POST["buttonCompra"])){
+                    $direccion=$_POST["user_direction"];
+                    $id_usuario_compra=$_POST["user_id"];
+                    $data=$_COOKIE['listProducts'];
+                    $fecha=$_POST["date"];
+                    $hora=$_POST["time"];
+                    $data=json_decode($data);
+                    $total=0;
+                    foreach($data as $product){
+                        $total+= $product->price * $product->cant;
+                    }
+                    $id_cabecera= $this->model->insertarCabeceraPedidos($total, $direccion, $id_usuario_compra, $fecha, $hora);
+                    $guardado=true;
+                    foreach($data as $product){
+                       $guardado= $this->model->guardarDetallesCompra( $product->name, $product->cant, $product->price, $id_cabecera);
+                    }
+                    if($guardado){
+                        $msj = 'Producto guardado exitosamente';
+                        $color = 'primary';
+                    }else{
+                        $msj = "No se pudo realizar el guardado";
+                        $color = "danger";
+                    }
+                    setcookie("mensajeGuardado", $msj);
+                    setcookie("colorGuardado", $color);
+                    header('Location:index.php?c=pedidos&a=mostrarPedidos');
+                }
+            }
+        }
+
+        public function getPedidosPorId(){
+            if(isset($_SESSION["usuario"])){
+                $userId=$_SESSION["usuario"]["id"];
+                $resultados=$this->model->getPedidos($userId);
+                echo json_encode($resultados);
+            }
+        }
+
+        public function mostrarPedidos(){
+            
+            require_once 'views/pedidos/mostrarPedidos.php';
+        }
     }
+
 
 ?>
