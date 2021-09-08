@@ -1,3 +1,15 @@
+<?php
+     session_start();
+     if(($_SESSION["usuario"]["rol"] == 1)){
+      header("location: index.php?c=admin");
+
+         
+     }else{
+         if($_SESSION["usuario"]["rol"] == 2){
+             header("location: index.php");
+         }
+     }
+?>
 <!DOCTYPE html>
 <html lang="es">
 
@@ -54,7 +66,7 @@
 
         </form>
 
-        <form action="info_pizza.html" class="sign-up-form formLocal" id="form2">
+        <form action="index.php?c=usuarios&a=registro" class="sign-up-form formLocal" method="POST" id="form2">
           <h2 style="color: #b36105; font-family: Bookman Old Style;">Ingrese los datos para el registro</h2>
           <br>
 
