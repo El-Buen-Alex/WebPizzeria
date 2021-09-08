@@ -29,12 +29,12 @@
 <?php
         require_once 'views/partials/header.php';
     ?>
-
 <body id="page-top">
 
     <!-- Page Wrapper -->
     <div id="wrapper">
-        <!-- End of Sidebar -->
+
+        
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
@@ -42,10 +42,9 @@
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <br>
-              
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Clientes registrados</h1>
+                        <h1 class="h3 mb-0 text-gray-800">Pedidos</h1>
                     </div>
                     <table class="table">
                         <thead>
@@ -87,24 +86,18 @@
                         </tbody>
                     </table>
                 </div>
-
             </div>
-
-
         </div>
-
     </div>
     <br>
     <br>
     <br>
     <br>
     <br>
-    
 
     <?php
         require_once 'views/partials/footer.php';
     ?>
-
 </body>
 
 </html>

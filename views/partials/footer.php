@@ -9,7 +9,7 @@
                 </div>
 
                 <?php if(!isset($_SESSION["usuario"])) { ?>
-                <<nav>
+                <nav>
                     <div class="nav_enlaces_pie">
                         <div style="text-align:center;">
                             <a class="enlace" href="index.php?c=pedidos">Menú |</a>
@@ -19,7 +19,7 @@
                 </nav>
             <?php } else {  ?>
                 <?php if($_SESSION["usuario"]["rol"] == 1){ ?>
-                <<nav>
+                <nav>
                     <div class="nav_enlaces_pie">
                         <div style="text-align:center;">
                             <a class="enlace" href="index.php?c=admin">Admin </a>
