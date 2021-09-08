@@ -64,6 +64,14 @@ class UsuariosController {
         session_destroy();
         header("location: index.php");
    }
+
+   public function getSessionUser(){
+    if(isset($_SESSION["usuario"])){
+        $userId=$_SESSION["usuario"]["id"];
+        $user=$this->model->buscarUsuarioPorId($userId);
+        echo json_encode($user);
+    }
+   }
 }
     
     
