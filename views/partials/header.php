@@ -37,7 +37,9 @@
                 <?php if($_SESSION["usuario"]["rol"] == 1){ ?>
                 <div class="nav_enlaces">
                 <a class="enlace" href="index.php">Inicio |</a>
-                <a class="enlace" href="index.php?c=admin">Admin </a>
+                <a class="enlace" href="index.php?c=admin">Clientes |</a>
+                <a class="enlace" href="index.php?c=vistapedidos&a=index">Pedidos |</a>
+                <a class="enlace" href="index.php?c=vistareservas&a=index">Reservas </a>
                 </div>
                 <div class="nav_botones">
                 <a class="botonesInicio" href="index.php?c=usuarios&a=cerrarSesion">Cerrar sesión</a>
