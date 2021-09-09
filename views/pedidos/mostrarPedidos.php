@@ -20,7 +20,8 @@
     <title>Lista de Pedidos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+ <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 </head>
 <body>
         <?php
@@ -35,6 +36,9 @@
                 </button>
             </div>
         <?php
+            setcookie("mensajeGuardado","",time() - 60);
+            setcookie("colorGuardado","",time() - 60);
+            setcookie('listProducts',"", time()-60);
          }
         ?>
         <div class="table-responsive mt-2 container shadow p-3 mb-5  rounded">
@@ -51,9 +55,33 @@
                 <tbody class="tabladatos" id="bodyTablaPedidos"></tbody>
             </table>
         </div>
-        <div id="prueba"></div>
+        <!-- Button trigger modal -->
+
+        <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <form class="modal-content" action="" method="">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">EDITAR PEDIDO</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body" > 
+                <span>Elija su direccion</span>
+                <div id="modalBody"></div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success editPedidos" onClick="sendToEdit()">Guardar</button>
+            </div>
+        </form>
+        </div>
+        </div>
         <script src="assets/js/mostrarPedidos.js"></script>
         <script src="assets/js/modalEditPedido.js"></script>
+        <script src="assets/js/editPedidoCabecera.js"></script>
+        
          <?php
              require_once 'views/partials/footer.php';
          ?>

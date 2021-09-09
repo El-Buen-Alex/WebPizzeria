@@ -75,6 +75,7 @@ function clearTable(){
 function buildItemPedido(posicion, idpedido_cabecera ,direccion, fecha_entr, hora_entr, precio_total){
     const tr=document.createElement("tr");
     tr.setAttribute("class","itemPedido")
+    tr.setAttribute("id",idpedido_cabecera)
     const td=document.createElement("td");
     td.innerHTML=posicion;
 
@@ -110,22 +111,21 @@ function buildActions(tr, idCabcera){
 
     const aEdit=document.createElement("button");
     aEdit.setAttribute("class","btn btn-primary mx-1")
+    aEdit.setAttribute("data-bs-toggle","modal")
+    aEdit.setAttribute("data-bs-target","#staticBackdrop")
     aEdit.setAttribute("onClick", "buildModal("+idCabcera+")")
     const iEdit=document.createElement("i");
     iEdit.setAttribute("class","fas fa-marker");
     aEdit.appendChild(iEdit);
-
     const aDelete=document.createElement("button");
     aDelete.setAttribute("class","btn btn-danger mx-1")
     aDelete.setAttribute("onclick","cancelarPedido("+idCabcera+")")
     const iDelete=document.createElement("i");
     iDelete.setAttribute("class","fas fa-trash-alt");
     aDelete.appendChild(iDelete);
-
     td.appendChild(ashow);
     td.appendChild(aEdit);
     td.appendChild(aDelete);
-
     tr.appendChild(td);
 }
 
@@ -134,3 +134,4 @@ function cancelarPedido(id){
   jsonId.id=id;
   realizarConsultaAjaxPost("index.php?c=pedidos&a=cancelarPedido", JSON.stringify(jsonId))
 }
+

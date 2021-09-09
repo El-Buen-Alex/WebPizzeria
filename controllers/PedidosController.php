@@ -95,6 +95,12 @@ session_start();
                 echo $respuestaCancelarPedidoDetalle;
             }
         }
+        public function editarPedidoCabecera(){
+            $data =  file_get_contents('php://input');
+            $data=json_decode($data);
+            $respuesta=$this->model->editarPedidoCabecera($data->idCabcera, $data->direccion, $data->fecha, $data->hora);
+            echo $respuesta;
+        }
     }
 
 

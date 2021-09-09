@@ -124,6 +124,29 @@ require_once 'config/conexion.php';
             }
             return true;
         }
+        function editarPedidoCabecera($idCabcera, $direccion, $fecha, $hora){
+             //prepare
+             $sql = "UPDATE pedido_cabecera SET direccion_entrega=:direccion, fecha_entrega=:fecha, hora_entrega=:hora
+              WHERE idpedido_cabecera=:id and estado='A'";
+             //now());
+             //bind parameters
+             $sentencia = $this->con->prepare($sql);
+            
+             $data = [
+                 'id' => +$idCabcera,
+                 'direccion'=>$direccion,
+                 'fecha' => $fecha,
+                 'hora'=>$hora         
+             ];
+             //execute
+             $sentencia->execute($data);
+             //retornar resultados, 
+             if ($sentencia->rowCount() <= 0) {// verificar si se inserto 
+                 //rowCount permite obtner el numero de filas afectadas
+                 return false;
+             }
+             return true;
+        }
     }
 
 ?>
