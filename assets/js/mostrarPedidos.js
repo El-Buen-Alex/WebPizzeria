@@ -7,6 +7,7 @@ request.onreadystatechange = function () {
   // readyState es 4
   if (request.readyState == 4) {
     userSession= JSON.parse(request.responseText);
+    console.log(userSession);
     
   }
 };
@@ -23,7 +24,10 @@ function realizarConsultaAjaxPost(url, json){
     request.onreadystatechange = function () {
       // readyState es 4
       if (request.readyState == 4) {
-        return  JSON.parse(request.responseText);
+        if(+request.responseText===1){
+          clearTable();
+          realizarConsultaAjaxGet("index.php?c=pedidos&a=getPedidosPorId");
+        }
       }
     };
     request.open("POST", url, true);
@@ -54,16 +58,23 @@ realizarConsultaAjaxGet("index.php?c=pedidos&a=getPedidosPorId");
 
 function buildTablePedidos(listaPedidos){
     console.log(listaPedidos);
-    let posicion=+0;
+    let posicion=+1;
     listaPedidos.forEach(e=>{
         console.log(e)
-        buildItemPedido(posicion, e.direccion_entrega, e.fecha_entrega, e.fecha_entrega, e.total)
+        buildItemPedido(posicion, e.idpedido_cabecera ,e.direccion_entrega, e.fecha_entrega, e.hora_entrega, e.total)
         posicion++;
     })
 
 }
-function buildItemPedido(posicion, direccion, fecha_entr, hora_entr, precio_total){
+function clearTable(){
+    const elementosTabla=document.querySelectorAll(".itemPedido");
+    elementosTabla.forEach(element=>{
+      element.remove();
+    })
+}
+function buildItemPedido(posicion, idpedido_cabecera ,direccion, fecha_entr, hora_entr, precio_total){
     const tr=document.createElement("tr");
+    tr.setAttribute("class","itemPedido")
     const td=document.createElement("td");
     td.innerHTML=posicion;
 
@@ -84,30 +95,29 @@ function buildItemPedido(posicion, direccion, fecha_entr, hora_entr, precio_tota
     tr.appendChild(tdFecha);
     tr.appendChild(tdHora);
     tr.appendChild(tdTotal);
-    buildActions(tr);
+    buildActions(tr,idpedido_cabecera);
     bodyTablaPedidos.appendChild(tr);
     
 }
-function buildActions(tr){
+function buildActions(tr, idCabcera){
     const td=document.createElement("td");
 
-    const ashow=document.createElement("a");
+    const ashow=document.createElement("button");
     ashow.setAttribute("class","btn btn-success mx-1")
-    ashow.setAttribute("href","index.php?id="+userSession.id);
     const ishow=document.createElement("i");
     ishow.setAttribute("class","fas fa-eye");
     ashow.appendChild(ishow);
 
-    const aEdit=document.createElement("a");
+    const aEdit=document.createElement("button");
     aEdit.setAttribute("class","btn btn-primary mx-1")
-    aEdit.setAttribute("href","index.php?id="+userSession.id);
+    aEdit.setAttribute("onClick", "buildModal("+idCabcera+")")
     const iEdit=document.createElement("i");
     iEdit.setAttribute("class","fas fa-marker");
     aEdit.appendChild(iEdit);
 
-    const aDelete=document.createElement("a");
+    const aDelete=document.createElement("button");
     aDelete.setAttribute("class","btn btn-danger mx-1")
-    aDelete.setAttribute("href","index.php?id="+userSession.id);
+    aDelete.setAttribute("onclick","cancelarPedido("+idCabcera+")")
     const iDelete=document.createElement("i");
     iDelete.setAttribute("class","fas fa-trash-alt");
     aDelete.appendChild(iDelete);
@@ -117,5 +127,10 @@ function buildActions(tr){
     td.appendChild(aDelete);
 
     tr.appendChild(td);
+}
 
+function cancelarPedido(id){
+  const jsonId={};
+  jsonId.id=id;
+  realizarConsultaAjaxPost("index.php?c=pedidos&a=cancelarPedido", JSON.stringify(jsonId))
 }

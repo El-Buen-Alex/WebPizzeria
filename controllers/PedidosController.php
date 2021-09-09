@@ -85,6 +85,16 @@ session_start();
             
             require_once 'views/pedidos/mostrarPedidos.php';
         }
+        public function cancelarPedido(){
+            $data =  file_get_contents('php://input');
+            $data=json_decode($data);
+            $id=$data->id;
+            $respuesta = $this->model->cancelarPedidoCabecera($id);
+            if($respuesta){
+                $respuestaCancelarPedidoDetalle=$this->model->cancelarPedidoDetalle($id);
+                echo $respuestaCancelarPedidoDetalle;
+            }
+        }
     }
 
 
