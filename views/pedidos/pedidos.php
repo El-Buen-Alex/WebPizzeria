@@ -1,10 +1,8 @@
 <?php
-     session_start();
          /* Si mi usuario es admin: */
          if($_SESSION["usuario"]["rol"] == 1){
              header("location: index.php?c=admin");
          }
-     
 ?>
 
 <!DOCTYPE html>

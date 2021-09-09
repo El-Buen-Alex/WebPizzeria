@@ -1,5 +1,4 @@
 <?php
-     session_start();
      /* Si algun usuario no ha iniciado sesion */
      if(!isset($_SESSION["usuario"]["rol"])){
         header("location: index.php?c=logreg&a=index");
@@ -49,14 +48,12 @@
                 <th>Precio Total</th>
                 <th>Acciones </th>
                 </thead>
-                <tbody class="tabladatos" id="bodyTablaPedidos">
-                    
-                    
-                   
-                </tbody>
+                <tbody class="tabladatos" id="bodyTablaPedidos"></tbody>
             </table>
         </div>
+        <div id="prueba"></div>
         <script src="assets/js/mostrarPedidos.js"></script>
+        <script src="assets/js/modalEditPedido.js"></script>
          <?php
              require_once 'views/partials/footer.php';
          ?>

@@ -85,6 +85,45 @@ require_once 'config/conexion.php';
             // retornar resultados
             return $resultados;
         }
+        public function cancelarPedidoCabecera($id){
+            //prepare
+            $sql = "UPDATE pedido_cabecera SET estado='N' WHERE idpedido_cabecera=:id and estado='A'";
+            //now());
+            //bind parameters
+            $sentencia = $this->con->prepare($sql);
+           
+            $data = [
+                'id' => +$id          
+            ];
+            //execute
+            $sentencia->execute($data);
+            //retornar resultados, 
+            if ($sentencia->rowCount() <= 0) {// verificar si se inserto 
+                //rowCount permite obtner el numero de filas afectadas
+                return false;
+            }
+            return true;
+        }
+
+        public function cancelarPedidoDetalle($id){
+            //prepare
+            $sql = "UPDATE pedido_detalle SET estado='N' WHERE id_pedido_cabecera=:id and estado='A'";
+            //now());
+            //bind parameters
+            $sentencia = $this->con->prepare($sql);
+           
+            $data = [
+                'id' => +$id          
+            ];
+            //execute
+            $sentencia->execute($data);
+            //retornar resultados, 
+            if ($sentencia->rowCount() <= 0) {// verificar si se inserto 
+                //rowCount permite obtner el numero de filas afectadas
+                return false;
+            }
+            return true;
+        }
     }
 
 ?>

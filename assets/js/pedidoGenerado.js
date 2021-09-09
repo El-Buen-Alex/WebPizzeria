@@ -1,6 +1,8 @@
 const inputsRadio=document.getElementsByName("flexRadioDefault");
 const divDireccion=document.getElementById("direction");
 const inputDirection= document.getElementById("user_input_direction");
+const divDirection=document.getElementById("directionSelect");
+var jsonResp ;
 //solcitar lista de productos
 var response;
 var ajax_url_ = "index.php?c=pedidos&a=getListOfProducts";
@@ -48,8 +50,8 @@ function getEstablecimientos(){
     // readyState es 4
     if (ajaxR.readyState == 4) {
         // Analizaos el responseText que contendrá el JSON enviado desde el servidor
-        var jsonResp = JSON.parse(ajaxR.responseText);
-        buildSelectDirection(jsonResp);
+         jsonResp = JSON.parse(ajaxR.responseText);
+        buildSelectDirection(jsonResp, divDirection);
         // La variable jsonObj ahora contiene un objeto con los datos recibidos
     }
     };
@@ -76,8 +78,7 @@ dateControl.value = fechaFormat ;
 dateControl.min=fechaFormat;
 
 console.log(dateControl.value);
-function  buildSelectDirection(jsonEstablecimientos){
-    const divDirection=document.getElementById("directionSelect");
+function  buildSelectDirection(jsonEstablecimientos, divDirection){
     const select=document.createElement("select");
     select.setAttribute("class","form-select choseDirection");
     select.setAttribute("aria-label","Default select example");
