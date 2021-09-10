@@ -7,8 +7,6 @@ request.onreadystatechange = function () {
   // readyState es 4
   if (request.readyState == 4) {
     userSession= JSON.parse(request.responseText);
-    console.log(userSession);
-    
   }
 };
 request.open("GET", "index.php?c=usuarios&a=getSessionUser", true);
@@ -57,10 +55,8 @@ function realizarConsultaAjaxGet(url){
 realizarConsultaAjaxGet("index.php?c=pedidos&a=getPedidosPorId");
 
 function buildTablePedidos(listaPedidos){
-    console.log(listaPedidos);
     let posicion=+1;
     listaPedidos.forEach(e=>{
-        console.log(e)
         buildItemPedido(posicion, e.idpedido_cabecera ,e.direccion_entrega, e.fecha_entrega, e.hora_entrega, e.total)
         posicion++;
     })
@@ -105,6 +101,9 @@ function buildActions(tr, idCabcera){
 
     const ashow=document.createElement("button");
     ashow.setAttribute("class","btn btn-success mx-1")
+    ashow.setAttribute("onClick","buildModalShowPedidoDetalle("+idCabcera+")")
+    ashow.setAttribute("data-bs-toggle","modal")
+    ashow.setAttribute("data-bs-target","#staticBackdrop")
     const ishow=document.createElement("i");
     ishow.setAttribute("class","fas fa-eye");
     ashow.appendChild(ishow);

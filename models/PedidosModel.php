@@ -147,6 +147,17 @@ require_once 'config/conexion.php';
              }
              return true;
         }
+        function getPedidosDetalle($id){
+
+            $sql="SELECT * FROM pedido_detalle where id_pedido_cabecera=:idCabecera and estado='A'";
+            $sentencia = $this->con->prepare($sql);
+            $data = [
+                'idCabecera' => +$id        
+            ];
+            $sentencia->execute($data);
+            $resultados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultados;
+        }
     }
 
 ?>

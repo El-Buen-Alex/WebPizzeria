@@ -81,6 +81,8 @@
         <script src="assets/js/mostrarPedidos.js"></script>
         <script src="assets/js/modalEditPedido.js"></script>
         <script src="assets/js/editPedidoCabecera.js"></script>
+        <script src="assets/js/showPedidoDetalle.js"></script>
+        <script src="assets/js/llenarTablaPedidosDetalles.js"></script>
         
          <?php
              require_once 'views/partials/footer.php';

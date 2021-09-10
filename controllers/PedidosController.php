@@ -101,6 +101,12 @@ session_start();
             $respuesta=$this->model->editarPedidoCabecera($data->idCabcera, $data->direccion, $data->fecha, $data->hora);
             echo $respuesta;
         }
+        public function getPedidosDetalle(){
+            $data =  file_get_contents('php://input');
+            $data=json_decode($data);
+            $respuesta=$this->model->getPedidosDetalle($data->id);
+            echo json_encode($respuesta);
+        }
     }
 
 

@@ -2,7 +2,7 @@ const inputsRadio=document.getElementsByName("flexRadioDefault");
 const divDireccion=document.getElementById("direction");
 const inputDirection= document.getElementById("user_input_direction");
 const divDirection=document.getElementById("directionSelect");
-var jsonResp ;
+var jsonRespEstablecimientos ;
 //solcitar lista de productos
 var response;
 var ajax_url_ = "index.php?c=pedidos&a=getListOfProducts";
@@ -14,7 +14,7 @@ ajax_request_.onreadystatechange = function () {
     // Analizaos el responseText que contendrá el JSON enviado desde el servidor
     response = ajax_request_.responseText;
     var jsonProducts=JSON.parse(response);
-    paintProducts(jsonProducts);
+    paintProducts(jsonProducts,"bodyTable");
     // La variable jsonObj ahora contiene un objeto con los datos recibidos
   }
 };
@@ -50,8 +50,8 @@ function getEstablecimientos(){
     // readyState es 4
     if (ajaxR.readyState == 4) {
         // Analizaos el responseText que contendrá el JSON enviado desde el servidor
-         jsonResp = JSON.parse(ajaxR.responseText);
-        buildSelectDirection(jsonResp, divDirection);
+         jsonRespEstablecimientos = JSON.parse(ajaxR.responseText);
+        buildSelectDirection(jsonRespEstablecimientos, divDirection);
         // La variable jsonObj ahora contiene un objeto con los datos recibidos
     }
     };
@@ -77,7 +77,6 @@ const fechaFormat=ano+"-"+mes+"-"+dia;
 dateControl.value = fechaFormat ;
 dateControl.min=fechaFormat;
 
-console.log(dateControl.value);
 function  buildSelectDirection(jsonEstablecimientos, divDirection){
     const select=document.createElement("select");
     select.setAttribute("class","form-select choseDirection");
@@ -111,87 +110,4 @@ function eliminarSelectDirection(selects){
 function changeDirection(){
     divDireccion.innerHTML=event.target.value;
     inputDirection.value=event.target.value;
-}
-
-function paintProducts(jsonProducts){
-    let total=+0;
-    jsonProducts.forEach(product=>{
-        buildBodyTableItem(product.cant, product.name, product.price);
-        total+=(+product.cant * +product.price);
-    })
-    createTableTotal(total);
-}
-
-function createTableTotal(SubTotal){
-    const bodyTable=document.getElementById("bodyTable");
-    const tr=document.createElement("tr");
-    tr.setAttribute("class","row");
-
-    const th=document.createElement("th");
-    th.setAttribute("class","col-md-10");
-    th.setAttribute("scope","row");
-    th.innerHTML="Este Documento no tiene validez tributaria";
-
-    const thDesgloce=document.createElement("th");
-    thDesgloce.setAttribute("class","col-md-2");
-    thDesgloce.setAttribute("scope","row");
-
-    
-
-    const trSubTotal=document.createElement("tr");
-    trSubTotal.setAttribute("class","row");
-    const tdSubtotal=document.createElement("td");
-    tdSubtotal.innerHTML=SubTotal;
-    trSubTotal.appendChild(tdSubtotal);
-
-
-    const trIva=document.createElement("tr");
-    trIva.setAttribute("class","row");
-    const tdIva=document.createElement("td");
-    const iva=(+SubTotal * +0.12)
-    tdIva.innerHTML= iva;
-    trIva.appendChild(tdIva);
-    
-    const trTotal=document.createElement("tr");
-    trTotal.setAttribute("class","row");
-    const tdtotal=document.createElement("td");
-    tdtotal.innerHTML= (SubTotal + iva);
-    trTotal.appendChild(tdtotal);
-
-    thDesgloce.appendChild(trSubTotal);
-    thDesgloce.appendChild(trIva);
-    thDesgloce.appendChild(trTotal);
-    tr.appendChild(th);
-    tr.appendChild(thDesgloce);
-    bodyTable.appendChild(tr); 
-}
-
-function buildBodyTableItem(cant, name, price){
-    const bodyTable=document.getElementById("bodyTable");
-    const tr=document.createElement("tr");
-    tr.setAttribute("class","row");
-
-    const th=document.createElement("th");
-    th.setAttribute("class","col-md-2");
-    th.setAttribute("scope","row");
-    th.innerHTML=cant;
-
-    const tdName=document.createElement("td");
-    tdName.setAttribute("class","col-md-6");
-    tdName.innerHTML=name;
-
-    const tdPrecioUnitario=document.createElement("td");
-    tdPrecioUnitario.setAttribute("class","col-md-2");
-    tdPrecioUnitario.innerHTML=price;
-
-    const tdTotal=document.createElement("td");
-    tdTotal.setAttribute("class","col-md-2");
-    
-    tdTotal.innerHTML=(+cant * +price);
-
-    tr.appendChild(th);
-    tr.appendChild(tdName);
-    tr.appendChild(tdPrecioUnitario);
-    tr.appendChild(tdTotal);
-    bodyTable.appendChild(tr);
 }

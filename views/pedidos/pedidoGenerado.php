@@ -110,6 +110,7 @@
          </form>
     </main>
 <script src="assets/js/pedidoGenerado.js"></script>
+<script src="assets/js/llenarTablaPedidosDetalles.js"></script>
     <?php
         require_once 'views/partials/footer.php';
     ?>
