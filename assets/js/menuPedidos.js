@@ -12,6 +12,7 @@ ajax_request.onreadystatechange = function () {
   if (ajax_request.readyState == 4) {
     // Analizaos el responseText que contendrá el JSON enviado desde el servidor
     var jsonObj = JSON.parse(ajax_request.responseText);
+    console.log(jsonObj);
     createProductsElements(jsonObj);
     // La variable jsonObj ahora contiene un objeto con los datos recibidos
   }

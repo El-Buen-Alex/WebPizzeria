@@ -1,28 +1,41 @@
 <?php
-    class Producto{
+require_once 'config/conexion.php';
+    class ProductoModel{
         private $urlImage;
         private $price;
         private $name;
         private $type;
 
-        public function __construct($urlImage, $price, $name, $type){
-            $this->urlImage=$urlImage;
-            $this->type=$type;
-            $this->price=$price;
-            $this->name=$name;
+        private $con;
+        public function __construct(){
+            // $this->urlImage=$urlImage;
+            // $this->type=$type;
+            // $this->price=$price;
+            // $this->name=$name;
+            $this->con = Conexion::getConexion();
         }
-        public function getUrlImage(){
-            return $this->urlImage;
+        public function getProductos(){
+            $sql="select * from producto where estado = 'A'";
+            $sentencia = $this->con->prepare($sql);
+            //execute
+            $sentencia->execute();
+            //retornar resultados
+            $resultados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultados;
         }
-    
-       public function getTye(){
-           return $this->type;
-       }
-        public function getPrice(){
-            return $this->price;
-        }
-        public function getName(){
-            return $this->name;
+        public function getProductsByNameOrType($name){
+            $sql="select * from producto where name like :a or type like :b and  estado = 'A'";
+            $sentencia = $this->con->prepare($sql);
+            $nameLike='%'.$name.'%';
+            $data=[
+                'a'=>$nameLike,
+                'b' =>$nameLike
+            ];
+            //execute
+            $sentencia->execute($data);
+            //retornar resultados
+            $resultados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultados;
         }
 
     }
