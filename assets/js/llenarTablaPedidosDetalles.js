@@ -16,7 +16,21 @@ function createTableTotal(SubTotal, id){
     const th=document.createElement("th");
     th.setAttribute("class","col-md-10");
     th.setAttribute("scope","row");
-    th.innerHTML="Este Documento no tiene validez tributaria";
+
+    const trSubTotalText=document.createElement("tr");
+    trSubTotalText.setAttribute("class","d-flex justify-content-end");
+    trSubTotalText.innerHTML="SubTotal";
+
+    const trIvaText=document.createElement("tr");
+    trIvaText.setAttribute("class","d-flex justify-content-end");
+    trIvaText.innerHTML="Iva";
+    
+    const trTotalText=document.createElement("tr");
+    trTotalText.setAttribute("class","d-flex justify-content-end");
+    trTotalText.innerHTML="Total";
+    th.appendChild(trSubTotalText);
+    th.appendChild(trIvaText);
+    th.appendChild(trTotalText);
 
     const thDesgloce=document.createElement("th");
     thDesgloce.setAttribute("class","col-md-2");
