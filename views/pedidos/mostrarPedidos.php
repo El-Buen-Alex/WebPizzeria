@@ -39,6 +39,9 @@
             setcookie("mensajeGuardado","",time() - 60);
             setcookie("colorGuardado","",time() - 60);
             setcookie('listProducts',"", time()-60);
+            if(isset($_COOKIE["edit"])){
+                setcookie("edit","", time()-60 );
+            }
          }
         ?>
         <div class="table-responsive mt-2 container shadow p-3 mb-5  rounded">

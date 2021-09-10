@@ -101,10 +101,11 @@
                     </div>
                     <div class="d-flex justify-content-start col-md-6">
                         <label for="time" class="mx-2"> Hora de entrega:</label>
-                        <input type="time" id="timet" name="time"
+                        <input type="time" id="timet" name="time" onchange="validarHoraMayor()"
                              min="09:00" max="18:00" required>
                     </div>
                 </div>
+                <div class="d-flex justify-content-center " style="color:red" id="divError"></div>
             <?php } ?>
             <div class="d-flex justify-content-center my-2">
                 <?php 
