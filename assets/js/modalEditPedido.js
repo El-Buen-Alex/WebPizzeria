@@ -86,8 +86,8 @@ function buildModal(idCabecera){
         divContainerDirection.setAttribute("id","containerDirection");
 
         divContainerDirection.appendChild(optDirecction);
-        optDirecction.appendChild(builddivDirectionOption("miDirection","Mi direccion:",+e.idpedido_cabecera, true,divContainerDirection))
-        optDirecction.appendChild(builddivDirectionOption("sucursalDirection","En sucursal",+e.idpedido_cabecera, false, divContainerDirection));
+        optDirecction.appendChild(builddivDirectionOption("miDirection","Mi direccion:",+e.idpedido_cabecera, true,divContainerDirection, e.direccion_entrega))
+        optDirecction.appendChild(builddivDirectionOption("sucursalDirection","En sucursal",+e.idpedido_cabecera, false, divContainerDirection,  e.direccion_entrega));
         divDatos.appendChild(divContainerDirection)
         divDatos.appendChild(divFecha);
         divDatos.appendChild(divHora)
@@ -125,7 +125,7 @@ function buildInputFechaentrega(type, value, id){
     return input;
 }
 
-function  builddivDirectionOption(id, direccion, idCabcera, estado, divContainerDirection){
+function  builddivDirectionOption(id, direccion, idCabcera, estado, divContainerDirection,  direccion_entrega){
   const div=document.createElement("div");
   div.setAttribute("class","form-check")
 
@@ -136,7 +136,7 @@ function  builddivDirectionOption(id, direccion, idCabcera, estado, divContainer
   input.setAttribute("onChange", "inputDirectionHandler("+idCabcera+")")
   input.setAttribute("id",id);
   if(estado){
-    divContainerDirection.appendChild(buildInputDirection(direccion))
+    divContainerDirection.appendChild(buildInputDirection(direccion_entrega))
     input.checked=estado;
   }
   

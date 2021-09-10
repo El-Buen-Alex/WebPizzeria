@@ -51,6 +51,8 @@
             </div>
         </div>
         <div class="row">
+            <?php if(!isset($_COOKIE["edit"])) {
+            ?>
             <div class="col-md-12 px-0 ">
                 <p class="d-flex justify-content-center bg-warning bg-gradient ">Direccion</p>
                 <div class="row">
@@ -75,6 +77,7 @@
                 </div>
             </div>
         </div>
+        <?php }?>
         <table class="table">
             <thead>
                 <tr class="row">
@@ -104,10 +107,19 @@
                 </div>
             <?php } ?>
             <div class="d-flex justify-content-center my-2">
+                <?php 
+                    if(!isset($_COOKIE["edit"])){
+                ?>
                 <input id="user_input_direction" name="user_direction" type="hidden" value="<?php echo $user->direccion ;?>">
                 <input id="userid" name="user_id" type="hidden" value="<?php echo $user->idUsuario ;?>">
+                <?php }else{
+                    ?>
+                    <input id="cabeceraId" name="cabcera_id" type="hidden" value="<?php echo $_COOKIE["edit"];?>">
+                <?php
+                }
+                ?>
                 <a class="btn btn-primary mx-2" href="index.php?c=pedidos" role="button">Volver a Elegir</a>
-                <button class="btn btn-success mx-2" type="submit" name="buttonCompra">Ordenar!</button>
+                <button class="btn btn-success mx-2" type="submit" name="buttonCompra"><?php echo isset($_COOKIE["edit"])? "Guardar Cambios":"Comprar!"?></button>
             </div>
             
          </form>

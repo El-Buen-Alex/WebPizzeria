@@ -158,6 +158,26 @@ require_once 'config/conexion.php';
             $resultados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             return $resultados;
         }
+        function ActualizarTotal($total, $idpedido_cabecera){
+             //prepare
+             $sql = "UPDATE pedido_cabecera SET total=:total WHERE idpedido_cabecera=:id and estado='A'";
+             //now());
+             //bind parameters
+             $sentencia = $this->con->prepare($sql);
+            
+             $data = [
+                 'id' => +$idpedido_cabecera,
+                 'total'=>$total
+             ];
+             //execute
+             $sentencia->execute($data);
+             //retornar resultados, 
+             if ($sentencia->rowCount() <= 0) {// verificar si se inserto 
+                 //rowCount permite obtner el numero de filas afectadas
+                 return false;
+             }
+             return true;
+        }
     }
 
 ?>

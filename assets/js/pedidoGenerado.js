@@ -64,7 +64,8 @@ function getEstablecimientos(){
     
 }
 var dateControl = document.querySelector('input[type="date"]');
-const tiempoTranscurrido = Date.now();
+if(dateControl){
+    const tiempoTranscurrido = Date.now();
 const hoy = new Date(tiempoTranscurrido);
 var mes = hoy.getMonth()+1; //obteniendo mes
 var dia = hoy.getDate(); //obteniendo dia
@@ -76,6 +77,8 @@ if(mes<10)
 const fechaFormat=ano+"-"+mes+"-"+dia;
 dateControl.value = fechaFormat ;
 dateControl.min=fechaFormat;
+}
+
 
 function  buildSelectDirection(jsonEstablecimientos, divDirection){
     const select=document.createElement("select");

@@ -12,6 +12,7 @@ function sendPedidoDetalleToEdit(){
       // readyState es 4
       if (ajx.readyState == 4) {
           console.log(ajx.responseText)
+          location.href ="index.php?c=pedidos"
         // Analizaos el responseText que contendrá el JSON enviado desde el servidor
         // La variable jsonObj ahora contiene un objeto con los datos recibidos
       }

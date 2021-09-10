@@ -47,7 +47,38 @@ session_start();
             $establecimientos=$modelEst->getEstablecimientos();
             echo json_encode( $establecimientos);
         }
-
+        public function editCompra(){
+            if(isset($_COOKIE['listProducts'])){
+                if(isset($_POST["buttonCompra"])){
+                    $idpedido_cabecera=$_POST["cabcera_id"];
+                    $data=$_COOKIE['listProducts'];
+                    $data=json_decode($data);
+                    $total=0;
+                    foreach($data as $product){
+                        $total+= $product->precio_unitario * $product->cantidad;
+                    }
+                    $repsuesta=$this->model->cancelarPedidoDetalle($idpedido_cabecera);
+                    if($repsuesta){
+                        foreach($data as $product){
+                            $guardado= $this->model->guardarDetallesCompra( $product->producto, $product->cantidad, $product->precio_unitario,$idpedido_cabecera);
+                         }
+                         if($guardado){
+                            $actualizarTotal=$this->model->ActualizarTotal($total, $idpedido_cabecera);
+                         }
+                    }
+                    if($actualizarTotal){
+                        $msj = 'Producto Actualizado exitosamente';
+                        $color = 'primary';
+                    }else{
+                        $msj = "No se pudo realizar el guardado";
+                        $color = "danger";
+                    }
+                    setcookie("mensajeGuardado", $msj);
+                    setcookie("colorGuardado", $color);
+                    header('Location:index.php?c=pedidos&a=mostrarPedidos');
+                }
+            }
+        }
         public function guardarCompra(){
             if(isset($_COOKIE['listProducts'])){
                 if(isset($_POST["buttonCompra"])){
@@ -59,12 +90,12 @@ session_start();
                     $data=json_decode($data);
                     $total=0;
                     foreach($data as $product){
-                        $total+= $product->price * $product->cant;
+                        $total+= $product->precio_unitario * $product->cantidad;
                     }
                     $id_cabecera= $this->model->insertarCabeceraPedidos($total, $direccion, $id_usuario_compra, $fecha, $hora);
                     $guardado=true;
                     foreach($data as $product){
-                       $guardado= $this->model->guardarDetallesCompra( $product->name, $product->cant, $product->price, $id_cabecera);
+                       $guardado= $this->model->guardarDetallesCompra( $product->producto, $product->cantidad, $product->precio_unitario, $id_cabecera);
                     }
                     if($guardado){
                         $msj = 'Producto guardado exitosamente';

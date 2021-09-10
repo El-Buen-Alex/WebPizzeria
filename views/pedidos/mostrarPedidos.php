@@ -58,7 +58,7 @@
         <!-- Modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-        <form class="modal-content" action="" method="">
+        <div class="modal-content" >
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel">EDITAR PEDIDO</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -75,14 +75,14 @@
             </div>
 
          
-        </form>
+        </div>
         </div>
         </div>
 
            <!-- Modal -->
         <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
-        <form class="modal-content" action="" method="">
+        <div class="modal-content" >
             <div class="modal-header">
                 <h5 class="modal-title" id="staticBackdropLabel1">EDITAR PEDIDO</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -107,7 +107,7 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-success editPedidosDetalles" onclick="sendPedidoDetalleToEdit()" data-bs-dismiss="modal">Editar</button>
             </div>
-            </form>
+        </div>
         </div>
         </div>
         <script src="assets/js/mostrarPedidos.js"></script>
