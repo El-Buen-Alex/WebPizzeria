@@ -104,22 +104,23 @@ function buildProductItem(cant, name) {
   const divPrincipal = document.createElement("div");
   divPrincipal.setAttribute(
     "class",
-    "mb-2 row w-100 shadow bg-white rounded item"
+    "mb-2 row shadow bg-white rounded item p-1"
   );
 
   const pname = document.createElement("p");
-  pname.setAttribute("class", "col-md-7");
+  pname.setAttribute("class", "col-md-7 d-flex align-items-center");
+  pname.setAttribute("style","font-size:12px")
   pname.innerHTML = name;
 
   const inputCant = document.createElement("input");
   inputCant.setAttribute("value", cant);
   inputCant.setAttribute("type", "number");
-  inputCant.setAttribute("class", "col-md-3");
+  inputCant.setAttribute("class", "col-md-3 my-1");
   inputCant.setAttribute("id", name);
   inputCant.setAttribute("onChange", "updateValue()");
 
   const buttonQuitar = document.createElement("button");
-  buttonQuitar.setAttribute("class", "btn btn-light col-md-2 ");
+  buttonQuitar.setAttribute("class", "btn btn-light col-md-2");
   buttonQuitar.setAttribute("type", "button");
   buttonQuitar.setAttribute("onClick", "removeItem()");
   buttonQuitar.innerHTML = "X";

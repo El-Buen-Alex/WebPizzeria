@@ -57,6 +57,7 @@ session_start();
                     foreach($data as $product){
                         $total+= $product->precio_unitario * $product->cantidad;
                     }
+                    $total=round(($total + ($total*0.12)), 2);
                     $repsuesta=$this->model->cancelarPedidoDetalle($idpedido_cabecera);
                     if($repsuesta){
                         foreach($data as $product){
@@ -92,6 +93,7 @@ session_start();
                     foreach($data as $product){
                         $total+= $product->precio_unitario * $product->cantidad;
                     }
+                    $total=round(($total + ($total*0.12)), 2);
                     $id_cabecera= $this->model->insertarCabeceraPedidos($total, $direccion, $id_usuario_compra, $fecha, $hora);
                     $guardado=true;
                     foreach($data as $product){

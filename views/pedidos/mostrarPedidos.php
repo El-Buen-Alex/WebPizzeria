@@ -31,7 +31,7 @@
          if (isset($_COOKIE['mensajeGuardado']) and isset($_COOKIE["colorGuardado"])) {
             ?>
             <div class="mt-2 alert alert-<?php echo $_COOKIE["colorGuardado"]; ?> alert-dismissible fade show" role="alert">
-                <?php echo $_COOKIE['mensajeGuardado']; ?>  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <?php echo $_COOKIE['mensajeGuardado']; ?>  <button type="button" class="btn-close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>

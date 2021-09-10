@@ -40,6 +40,7 @@ function paintProductsPedidoDetalle(jsonPedidoDetalles,idTableContainer){
         buildBodyTableItem(product.cantidad, product.producto, product.precio_unitario, idTableContainer);
         total+=(+product.cantidad * +product.precio_unitario);
     })
+    total=total.toFixed(2);
     createTableTotal(total,idTableContainer);
 }
 function cleanModalShow(){

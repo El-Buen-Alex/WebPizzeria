@@ -34,14 +34,16 @@ function createTableTotal(SubTotal, id){
     const trIva=document.createElement("tr");
     trIva.setAttribute("class","row");
     const tdIva=document.createElement("td");
-    const iva=(+SubTotal * +0.12)
+    const iva=(+SubTotal * +0.12).toFixed(2)
     tdIva.innerHTML= iva;
     trIva.appendChild(tdIva);
     
     const trTotal=document.createElement("tr");
     trTotal.setAttribute("class","row");
     const tdtotal=document.createElement("td");
-    tdtotal.innerHTML= (SubTotal + iva);
+    const total=+SubTotal + +iva;
+
+    tdtotal.innerHTML= total.toFixed(2);
     trTotal.appendChild(tdtotal);
 
     thDesgloce.appendChild(trSubTotal);
