@@ -43,7 +43,7 @@ function paintProductsPedidoDetalle(jsonPedidoDetalles,idTableContainer){
     createTableTotal(total,idTableContainer);
 }
 function cleanModalShow(){
-    const removeDatos=document.querySelectorAll(".bodyTable");
+    const removeDatos=document.querySelectorAll(".datosTabla");
     if(removeDatos){
         removeDatos.forEach(e=>{
             e.remove();
@@ -53,6 +53,9 @@ function cleanModalShow(){
 function buildModalShowPedidoDetalle(idCabecera){
     const jsonid={}
     jsonid.id=idCabecera;
+    const button=document.querySelector(".editPedidosDetalles");
+    console.log(button)
+    button.setAttribute("id", +idCabecera);
     cleanModalShow();
     realizarConsultaAjaxPostPedidoDetalle("index.php?c=pedidos&a=getPedidosDetalle", JSON.stringify(jsonid))
 }

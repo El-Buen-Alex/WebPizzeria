@@ -2,12 +2,16 @@ function sendPedidoDetalleToEdit(){
     const ajx_url = "index.php?c=pedidos&a=editarPedidoDetalle";
     const ajx = new XMLHttpRequest();
     // Definimos una función a ejecutar cuándo la solicitud Ajax tiene alguna información
-    const myjson = JSON.stringify(jsonPedidoDetalles);
+    console.log(jsonPedidoDetalles)
+    const newPedido={}
+    newPedido.myjson=jsonPedidoDetalles;
+    newPedido.id=event.target.id;
+    const myjson = JSON.stringify(newPedido);
     console.log(myjson)
     ajx.onreadystatechange = function () {
       // readyState es 4
       if (ajx.readyState == 4) {
-          console.log(ajx.response_request)
+          console.log(ajx.responseText)
         // Analizaos el responseText que contendrá el JSON enviado desde el servidor
         // La variable jsonObj ahora contiene un objeto con los datos recibidos
       }

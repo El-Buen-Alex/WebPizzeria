@@ -87,7 +87,6 @@ function addProductOfList() {
   const divNameProduct = divprecio.nextSibling;
   const nameProduct = divNameProduct.innerHTML;
   let existe = false;
-
   listOfProducts.forEach((element) => {
     if (element.producto === nameProduct) {
       element.cantidad = +element.cantidad + 1;

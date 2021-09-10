@@ -105,7 +105,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-success editPedidos" onclick="sendPedidoDetalleToEdit()" data-bs-dismiss="modal">Editar</button>
+                <button type="button" class="btn btn-success editPedidosDetalles" onclick="sendPedidoDetalleToEdit()" data-bs-dismiss="modal">Editar</button>
             </div>
             </form>
         </div>

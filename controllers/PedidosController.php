@@ -14,9 +14,10 @@ session_start();
         }
         public function editarPedidoDetalle(){
             $data = file_get_contents('php://input');
-            setcookie("listProducts", $data);
-            setcookie("edit",true);
-            var_dump ($data);
+            $data= json_decode($data);
+            setcookie("listProducts", json_encode($data->myjson));
+            setcookie("edit",$data->id);
+            echo ($data->id);
         }
         public function generarPedido(){
            
