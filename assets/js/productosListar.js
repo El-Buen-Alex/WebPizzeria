@@ -50,6 +50,7 @@ function buildCardProduct(id_producto, name, price, type, urlImage){
 
     const buttonElim = document.createElement("button");
     buttonElim.setAttribute("class","btn btn-danger col-md-5");
+    buttonElim.setAttribute("onClick","eliminarProducto()");
     buttonElim.setAttribute("id",id_producto)
     buttonElim.innerHTML="ELIMINAR";
 

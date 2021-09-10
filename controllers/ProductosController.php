@@ -18,5 +18,15 @@ require_once 'models/ProductoModel.php';
             echo json_encode($respuesta);
             
         }
+        public function eliminarProducto(){
+            $data =  file_get_contents('php://input');
+            $data=json_decode($data);
+            $id=$data->id;
+            $respuesta = $this->model->eliminarProducto($id);
+            if($respuesta){
+                $resultado=$this->model->getProductos();
+                echo json_encode($resultado);
+            }
+        }
     }
 ?>

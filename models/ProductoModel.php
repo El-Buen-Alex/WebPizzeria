@@ -37,6 +37,19 @@ require_once 'config/conexion.php';
             $resultados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             return $resultados;
         }
-
+        public function eliminarProducto($id){
+            $sql="UPDATE  producto set estado='N' where id_producto=:id and  estado = 'A'";
+            $sentencia = $this->con->prepare($sql);
+            $data=[
+                'id'=>$id
+            ];
+            $sentencia->execute($data);
+            //execute
+            if ($sentencia->rowCount() <= 0) {// verificar si se inserto 
+                //rowCount permite obtner el numero de filas afectadas
+                return false;
+            }
+            return true;
+        }
     }
 ?>
