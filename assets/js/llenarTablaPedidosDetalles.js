@@ -2,8 +2,8 @@
 function paintProducts(jsonProducts, idTableContainer){
     let total=+0;
     jsonProducts.forEach(product=>{
-        buildBodyTableItem(product.cant, product.name, product.price, idTableContainer);
-        total+=(+product.cant * +product.price);
+        buildBodyTableItem(product.cantidad, product.producto, product.precio_unitario, idTableContainer);
+        total+=(+product.cantidad * +product.precio_unitario);
     })
     createTableTotal(total,idTableContainer);
 }

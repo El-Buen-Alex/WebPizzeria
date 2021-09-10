@@ -89,14 +89,14 @@ function addProductOfList() {
   let existe = false;
 
   listOfProducts.forEach((element) => {
-    if (element.name === nameProduct) {
-      element.cant = +element.cant + 1;
+    if (element.producto === nameProduct) {
+      element.cantidad = +element.cantidad + 1;
       repaintElements();
       existe = true;
     }
   });
   if (!existe) {
-    listOfProducts.push({ name: nameProduct, price: priceProduct, cant: 1 });
+    listOfProducts.push({ producto: nameProduct, precio_unitario: priceProduct, cantidad: 1 });
     repaintElements();
   }
 }
@@ -133,9 +133,10 @@ function buildProductItem(cant, name) {
 }
 function updateValue() {
   const nameProduct = event.target.id;
+  console.log(nameProduct)
   listOfProducts.forEach((element) => {
-    if (element.name === nameProduct) {
-      element.cant = event.target.value;
+    if (element.producto === nameProduct) {
+      element.cantidad = +event.target.value;
     }
   });
   repaintElements();
@@ -151,7 +152,7 @@ function removeChilds() {
 function removeItem() {
   const nameProduct = event.target.nextElementSibling.innerHTML;
   listOfProducts = listOfProducts.filter(
-    (element) => element.name !== nameProduct
+    (element) => element.producto !== nameProduct
   );
   repaintElements();
 }
@@ -162,8 +163,9 @@ function repaintElements() {
     sendDataToServer();
     let total = +0;
     listOfProducts.forEach((element) => {
-      total += +element.price * +element.cant;
-      buildProductItem(element.cant, element.name);
+      total += +element.precio_unitario * +element.cantidad;
+      
+      buildProductItem(element.cantidad, element.producto);
     }
   );
   const spanPrice = document.getElementById("totalPriceOfProducts");

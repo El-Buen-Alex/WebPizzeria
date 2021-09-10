@@ -1,5 +1,5 @@
 function sendPedidoDetalleToEdit(){
-    const ajx_url = "index.php?c=pedidos&a=generarPedido";
+    const ajx_url = "index.php?c=pedidos&a=editarPedidoDetalle";
     const ajx = new XMLHttpRequest();
     // Definimos una función a ejecutar cuándo la solicitud Ajax tiene alguna información
     const myjson = JSON.stringify(jsonPedidoDetalles);

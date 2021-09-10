@@ -12,6 +12,12 @@ session_start();
         public function index(){
             require_once 'views/pedidos/pedidos.php';
         }
+        public function editarPedidoDetalle(){
+            $data = file_get_contents('php://input');
+            setcookie("listProducts", $data);
+            setcookie("edit",true);
+            var_dump ($data);
+        }
         public function generarPedido(){
            
           $data = file_get_contents('php://input');

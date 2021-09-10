@@ -86,7 +86,10 @@
             </thead>
             <tbody id="bodyTable"></tbody>
          </table>
-         <form  method="post" action="index.php?c=pedidos&a=guardarCompra" name="formCompra">
+         <form  method="post" action="index.php?c=pedidos&a=<?php echo isset($_COOKIE["edit"])? "editCompra":"guardarCompra"?>" name="formCompra">
+             <?php 
+                if(!isset($_COOKIE["edit"])){
+             ?>
                 <div class="row">
                     <div id="time" class="d-flex justify-content-end col-md-6">
                         <label for="meeting-time" class="mx-2">Dia de entrega:</label>
@@ -99,7 +102,7 @@
                              min="09:00" max="18:00" required>
                     </div>
                 </div>
-        
+            <?php } ?>
             <div class="d-flex justify-content-center my-2">
                 <input id="user_input_direction" name="user_direction" type="hidden" value="<?php echo $user->direccion ;?>">
                 <input id="userid" name="user_id" type="hidden" value="<?php echo $user->idUsuario ;?>">
