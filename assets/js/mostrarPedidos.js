@@ -103,7 +103,7 @@ function buildActions(tr, idCabcera){
     ashow.setAttribute("class","btn btn-success mx-1")
     ashow.setAttribute("onClick","buildModalShowPedidoDetalle("+idCabcera+")")
     ashow.setAttribute("data-bs-toggle","modal")
-    ashow.setAttribute("data-bs-target","#staticBackdrop")
+    ashow.setAttribute("data-bs-target","#staticBackdrop1")
     const ishow=document.createElement("i");
     ishow.setAttribute("class","fas fa-eye");
     ashow.appendChild(ishow);

@@ -11,7 +11,7 @@ function paintProducts(jsonProducts, idTableContainer){
 function createTableTotal(SubTotal, id){
     const bodyTable=document.getElementById(id);
     const tr=document.createElement("tr");
-    tr.setAttribute("class","row");
+    tr.setAttribute("class","row "+id);
 
     const th=document.createElement("th");
     th.setAttribute("class","col-md-10");
@@ -56,7 +56,8 @@ function createTableTotal(SubTotal, id){
 function buildBodyTableItem(cant, name, price, id){
     const bodyTable=document.getElementById(id);
     const tr=document.createElement("tr");
-    tr.setAttribute("class","row");
+    tr.setAttribute("class","row datosTabla");
+    
 
     const th=document.createElement("th");
     th.setAttribute("class","col-md-2");

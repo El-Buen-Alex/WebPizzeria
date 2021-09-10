@@ -1,4 +1,4 @@
-
+let  jsonPedidoDetalles;
 function realizarConsultaAjaxPostPedidoDetalle(url, json){
     const request = new XMLHttpRequest();
     // Definimos una función a ejecutar cuándo la solicitud Ajax tiene alguna información
@@ -7,9 +7,9 @@ function realizarConsultaAjaxPostPedidoDetalle(url, json){
     request.onreadystatechange = function () {
       // readyState es 4
       if (request.readyState == 4) {
-          const jsonPedidoDetalles=JSON.parse(request.responseText)
+          jsonPedidoDetalles=JSON.parse(request.responseText)
           console.log(jsonPedidoDetalles)
-          paintProducts(jsonPedidoDetalles,"modalBody");
+          paintProductsPedidoDetalle(jsonPedidoDetalles,"bodyTable");
       }
     };
     request.open("POST", url, true);
@@ -20,10 +20,34 @@ function realizarConsultaAjaxPostPedidoDetalle(url, json){
     // Enviar la solicitud
     request.send(json);
 }
+function buildTable(){
+    const table=document.createElement("table");
+    table.setAttribute("class","table");
+    
+    const thead=document.createElement("thead");
+    const tr=document.createElement("tr");
+    tr.setAttribute("class","row");
+    const thCant=document.createElement("th");
+    thCant.setAttribute("col-md-2");
+    thCant.setAttribute("scope","col");
+    thCant.innerHTML="Cantidad";
+
+}
+function paintProductsPedidoDetalle(jsonPedidoDetalles,idTableContainer){
+    let total=+0;
+    cleanModalShow()
+    jsonPedidoDetalles.forEach(product=>{
+        buildBodyTableItem(product.cantidad, product.producto, product.precio_unitario, idTableContainer);
+        total+=(+product.cantidad * +product.precio_unitario);
+    })
+    createTableTotal(total,idTableContainer);
+}
 function cleanModalShow(){
-    const removeDatos=document.getElementById("datos");
+    const removeDatos=document.querySelectorAll(".bodyTable");
     if(removeDatos){
-        removeDatos.remove();
+        removeDatos.forEach(e=>{
+            e.remove();
+        })
     }
 }
 function buildModalShowPedidoDetalle(idCabecera){
@@ -45,3 +69,4 @@ function tableShowPedidosDetalles(){
     divDatos.innerHTML="hola";
     divConetnedor.appendChild(divDatos);
 }
+

@@ -55,8 +55,6 @@
                 <tbody class="tabladatos" id="bodyTablaPedidos"></tbody>
             </table>
         </div>
-        <!-- Button trigger modal -->
-
         <!-- Modal -->
         <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -75,7 +73,41 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
                 <button type="button" class="btn btn-success editPedidos" onClick="sendToEdit()" data-bs-dismiss="modal">Guardar</button>
             </div>
+
+         
         </form>
+        </div>
+        </div>
+
+           <!-- Modal -->
+        <div class="modal fade" id="staticBackdrop1" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <form class="modal-content" action="" method="">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel1">EDITAR PEDIDO</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            
+            <div class="modal-body" > 
+                <span>Elija su direccion</span>
+                <table class="table">
+            <thead>
+                <tr class="row">
+                    <th class="col-md-2" scope="col">Cantidad</th>
+                    <th class="col-md-6" scope="col">Descripcion</th>
+                    <th class="col-md-2" scope="col">Precio Unitario</th>
+                    <th  class="col-md-2"scope="col">Total</th>
+                </tr>
+            </thead>
+            <tbody id="bodyTable"></tbody>
+         </table>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-success editPedidos" onclick="sendPedidoDetalleToEdit()" data-bs-dismiss="modal">Editar</button>
+            </div>
+            </form>
         </div>
         </div>
         <script src="assets/js/mostrarPedidos.js"></script>
@@ -83,9 +115,12 @@
         <script src="assets/js/editPedidoCabecera.js"></script>
         <script src="assets/js/showPedidoDetalle.js"></script>
         <script src="assets/js/llenarTablaPedidosDetalles.js"></script>
+        <script src="assets/js/editPedidoDetalle.js"></script>
         
          <?php
              require_once 'views/partials/footer.php';
          ?>
 </body>
 </html>
+
+
