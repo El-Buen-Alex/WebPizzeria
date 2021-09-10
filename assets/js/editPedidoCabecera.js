@@ -1,4 +1,4 @@
-
+const buttonSave=document.querySelector(".editPedidos");
 function recuperarDireccionSelected(){
     validarDireccion();
 }
@@ -22,8 +22,10 @@ function validarDireccion(){
     if(direccion==="error" || direccion.trim()===""){
         const divDirection=document.getElementById("containerDirection");
         divDirection.appendChild(createMensajeError("Please, Ingrese una direccion correcta","direccion"))
+        buttonSave.disabled=true;
         return false;
    }
+   buttonSave.disabled=false;
    return true;
 }
 
@@ -33,8 +35,10 @@ function validarFecha(){
     const fecha=(recuperarFecha())
     if(fecha==="error"){
         fechaPadreElement.appendChild(createMensajeError("Please, Ingrese una fecha mayor o igual a la actual","fecha"))
+        buttonSave.disabled=true;
         return false;
     }
+    buttonSave.disabled=false;
     return true;
 }
 function validarHora(){
@@ -43,9 +47,11 @@ function validarHora(){
     const hora= recuperarHora("hora_ent", fecha)
     const horaPadreElement=document.getElementById("hora_ent").parentNode;
     if(hora==="error"){
+        buttonSave.disabled=true;
         horaPadreElement.appendChild(createMensajeError("Please, La hora minima de envio es media hora mayor a la actual","hora"))
         return false;
     }
+    buttonSave.disabled=false;
     return true;
 }
 
@@ -56,16 +62,14 @@ function sendToEdit(){
         const fecha =recuperarFecha();
         const hora=recuperarHora("hora_ent",fecha);
         const id=document.getElementById("hora_ent");
-
-        const buttonSave=document.querySelector(".editPedidos");
         const idCabcera=buttonSave.id;
-
          const jsonPedido={}
          jsonPedido.idCabcera=idCabcera;
          jsonPedido.direccion=direccion;
          jsonPedido.fecha=fecha;
          jsonPedido.hora=hora;
-        realizarConsultaAjaxPost("index.php?c=pedidos&a=editarPedidoCabecera", JSON.stringify(jsonPedido)) 
+         realizarConsultaAjaxPost("index.php?c=pedidos&a=editarPedidoCabecera", JSON.stringify(jsonPedido))
+
     }else{
            
     }

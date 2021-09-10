@@ -17,10 +17,4 @@ if (!is_file($archivoCont)) {//verificar q exista
 require_once  $archivoCont;
 $objetoCont = new $cont();
 $objetoCont->$accion();
-
-//require_once 'controllers/ProductosController.php';
-//$cont = new ProductosController();
-//$cont->index();
-
-
 ?>

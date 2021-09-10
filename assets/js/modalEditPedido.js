@@ -60,8 +60,9 @@ function buildModal(idCabecera){
           removeDatos.remove();
         }
        
-        const buttonSave=document.querySelector(".editPedidos");
+        
         buttonSave.setAttribute("id",idCabecera)
+        buttonSave.disabled=true;
 
 
         const divConetnedor=document.getElementById("modalBody");
