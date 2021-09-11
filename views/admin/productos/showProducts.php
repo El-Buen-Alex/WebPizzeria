@@ -69,7 +69,7 @@
     </div>
 
     <script src="assets/js/productosListar.js"></script>
-    <script src="assets/js/buscarProducto.js"></script>
+    <script src="assets/js/crudProducto.js"></script>
          <footer>
             <?php
                     require_once "views/partials/footer.php";

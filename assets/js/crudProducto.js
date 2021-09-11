@@ -255,6 +255,7 @@ function GuardarProducto(){
     const precio=document.getElementById("priceProduct");
     const name=document.getElementById("nameProduct");
     const img=document.getElementById("file");
+    if(validarImgSubida()){
     const imgFiles=img.files;
     const imgUp=imgFiles[0];
     
@@ -281,8 +282,9 @@ function GuardarProducto(){
         }
     };
     xhttp.send(formdat);
-
+    }
 }
+
 function createMensajeError(mensajeError, typo){
     const span=document.createElement("span")
     span.setAttribute("class", "error error"+typo);
@@ -350,7 +352,18 @@ function validarCamposEdit(){
     const valor=inputPrice.value;
     const boolName=validarNameInput(name, inputName.parentNode);
     const boolPrice=validarPriceInput(valor, inputPrice.parentNode);
-    if( boolName && boolPrice ){
+
+    const divImageContainer=document.getElementById("previewImage");
+    let validatImagen;
+    if(divImageContainer.hasChildNodes()){
+        validatImagen=true;
+    }else{
+        removeErrorMensajes("errorimg")
+        validatImagen=false;
+        divImageContainer.parentNode.insertBefore(createMensajeError("Ingrese una imagen Por favor","img"),divImageContainer)
+    }
+
+    if( boolName && boolPrice && validatImagen){
         buttonSaveModal.disabled=false;
         buttonEditModal.disabled=false;
     }else{

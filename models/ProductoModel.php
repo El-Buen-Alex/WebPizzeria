@@ -15,7 +15,7 @@ require_once 'config/conexion.php';
             $this->con = Conexion::getConexion();
         }
         public function getProductos(){
-            $sql="select * from producto where estado = 'A'";
+            $sql="select * from producto where estado = 'A' order by id_producto desc";
             $sentencia = $this->con->prepare($sql);
             //execute
             $sentencia->execute();
