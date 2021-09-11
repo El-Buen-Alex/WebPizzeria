@@ -23,6 +23,18 @@ require_once 'config/conexion.php';
             $resultados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             return $resultados;
         }
+        public function getProductById($id){
+            $sql="select * from producto where id_producto=:idProducto and estado = 'A'";
+            $sentencia = $this->con->prepare($sql);
+            $data=[
+                'idProducto'=>$id
+            ];
+            //execute
+            $sentencia->execute($data);
+            //retornar resultados
+            $resultados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            return $resultados;
+        }
         public function getProductsByNameOrType($name){
             $sql="select * from producto where name like :a or type like :b and  estado = 'A'";
             $sentencia = $this->con->prepare($sql);
@@ -50,6 +62,24 @@ require_once 'config/conexion.php';
                 return false;
             }
             return true;
+        }
+        public function addProducto($ruta, $nombre, $precio, $type){
+            $sql="INSERT INTO producto (`name`, `urlImage`, `price`, `type`, `estado`) values (:nombre, :urlImg, :precio, :tipo, 'A')";
+            $sentencia = $this->con->prepare($sql);
+            $data=[
+                'nombre'=>$nombre,
+                'urlImg'=>$ruta,
+                'precio'=>$precio,
+                'tipo'=>$type
+            ];
+            $sentencia->execute($data);
+            //execute
+            if ($sentencia->rowCount() <= 0) {// verificar si se inserto 
+                //rowCount permite obtner el numero de filas afectadas
+                return false;
+            }
+            return true;
+        
         }
     }
 ?>

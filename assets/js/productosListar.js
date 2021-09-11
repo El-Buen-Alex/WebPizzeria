@@ -1,3 +1,4 @@
+
 function getAllElementsAndPaint(){
     const ajax_url = "index.php?c=menu&a=getProducts";
 const ajax_request = new XMLHttpRequest();
@@ -34,7 +35,7 @@ function buildCardProduct(id_producto, name, price, type, urlImage){
     img.setAttribute("src", urlImage);
     img.setAttribute("alt", name);
     img.setAttribute("class", "p-2 ");
-    img.setAttribute("style", "width: 150px");
+    img.setAttribute("style", "height: 150px ");
 
     const p=document.createElement("p");
     p.setAttribute("class","d-flex justify-content-center")
@@ -45,6 +46,10 @@ function buildCardProduct(id_producto, name, price, type, urlImage){
 
     const buttonEdit = document.createElement("button");
     buttonEdit.setAttribute("class","btn btn-warning col-md-5");
+    buttonEdit.setAttribute("data-bs-toggle","modal")
+    buttonEdit.setAttribute("data-bs-target","#editModal");
+    buttonEdit.setAttribute("id",+id_producto);
+    buttonEdit.setAttribute("onClick","editProducto()");
     buttonEdit.setAttribute("id",id_producto)
     buttonEdit.innerHTML="EDITAR";
 

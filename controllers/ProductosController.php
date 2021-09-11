@@ -18,6 +18,13 @@ require_once 'models/ProductoModel.php';
             echo json_encode($respuesta);
             
         }
+        function getProductById(){
+            $data =  file_get_contents('php://input');
+            $data=json_decode($data);
+            $id=$data->idProducto;
+            $response=$this->model->getProductById($id);
+           echo json_encode($response);
+        }
         public function eliminarProducto(){
             $data =  file_get_contents('php://input');
             $data=json_decode($data);
@@ -26,6 +33,24 @@ require_once 'models/ProductoModel.php';
             if($respuesta){
                 $resultado=$this->model->getProductos();
                 echo json_encode($resultado);
+            }
+        }
+        public function addProducto(){
+            if ($_POST['ajax'] == 2){
+                if(isset($_FILES['file'])){
+                   $archivo=$_FILES['file']['name'];
+                   $temp = $_FILES['file']['tmp_name'];
+                   
+                   $tipo=$_POST['type'];
+                    $nombre= $_POST["name"];
+                    $precio= $_POST["price"];
+                   if (move_uploaded_file($temp, 'assets/resources/menu/'.$archivo)){
+                        $ruta = 'assets/resources/menu/'.$archivo;
+                        $this->model->addProducto($ruta, $nombre, $precio,$tipo);
+                        $resultado=$this->model->getProductos();
+                        echo json_encode($resultado);
+                   }
+                }
             }
         }
     }
