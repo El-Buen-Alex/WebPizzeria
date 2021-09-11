@@ -13,7 +13,6 @@ if (!is_file($archivoCont)) {//verificar q exista
     $archivoCont = 'controllers/' . CONTROLADOR_PRINCIPAL . 'Controller'.'.php';
     $accion = ACCION_PRINCIPAL;
 }
-
 require_once  $archivoCont;
 $objetoCont = new $cont();
 $objetoCont->$accion();
