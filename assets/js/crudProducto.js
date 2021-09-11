@@ -268,7 +268,7 @@ function GuardarProducto(){
      formdat.append("file",imgUp);
      formdat.append("name",name.value);
      formdat.append("price",precio.value);
-     formdat.append("type",tipoProductoHandler);
+     formdat.append("type", recuperarTipoProducto());
      formdat.append('ajax', 2);
 
      const xhttp = new XMLHttpRequest();
@@ -410,7 +410,7 @@ function validarPriceInput(valor, padre){
 
 function recuperarTipoProducto(){
     const lista = document.getElementById("selectTipo");
-    const opt=lista.options[lista.selectedIndex].text;
+    const opt=lista.options[lista.selectedIndex].value;
     return opt;
     
 }

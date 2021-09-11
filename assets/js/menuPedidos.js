@@ -44,7 +44,7 @@ function createElement(element) {
   img.setAttribute("src", element.urlImage);
   img.setAttribute("alt", element.name);
   img.setAttribute("class", "p-2");
-  img.setAttribute("style", "width: 150px");
+  img.setAttribute("style", "height: 150px");
 
   const divImage = document.createElement("div");
   divImage.setAttribute("class", "d-flex justify-content-center");
