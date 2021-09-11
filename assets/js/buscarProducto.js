@@ -119,7 +119,7 @@ function addProducto(){
 function buildInputPrice(){
     const input=document.createElement("input");
     input.setAttribute("type","number");
-    input.setAttribute("onKeyUp","validarPrecio()");
+    input.setAttribute("onKeyUp","validarCamposEdit()");
     input.setAttribute("class","form-control")
     input.setAttribute("id","priceProduct")
     return input;
@@ -127,7 +127,7 @@ function buildInputPrice(){
 function buildInputName(){
     const input=document.createElement("input");
     input.setAttribute("type","text");
-    input.setAttribute("onKeyUp","validarNombre()");
+    input.setAttribute("onKeyUp","validarCamposEdit()");
     input.setAttribute("class","form-control")
     input.setAttribute("id","nameProduct")
     return input;
@@ -144,6 +144,7 @@ function buildInputImage(){
 function buildSelectTypePr(){
     const select=document.createElement("select");
     select.setAttribute("class","form-select");
+    select.setAttribute("id","selectTipo");
     select.setAttribute("onChange","recuperarTipo()");
    
     const optionPi=document.createElement("option");
@@ -319,7 +320,7 @@ function editProducto(){
 function setValuesInModalEdit(productoname, precio, url, id, tipo){
     console.log(productoname);
     const inputName=document.getElementById("nameProduct");
-    
+    buttonEditModal.value=id;
     inputName.value=productoname;
     const inputPrice=document.getElementById("priceProduct");
     inputPrice.value=+precio;
@@ -340,4 +341,98 @@ function setValuesInModalEdit(productoname, precio, url, id, tipo){
     img.setAttribute("id", "imagenProducto");
     img.setAttribute("style", "height: 175px");
     previewImage.appendChild(img);
+}
+
+function validarCamposEdit(){
+    const inputPrice=document.getElementById("priceProduct");
+    const inputName=document.getElementById("nameProduct");
+    const name=inputName.value;
+    const valor=inputPrice.value;
+    const boolName=validarNameInput(name, inputName.parentNode);
+    const boolPrice=validarPriceInput(valor, inputPrice.parentNode);
+    if( boolName && boolPrice ){
+        buttonSaveModal.disabled=false;
+        buttonEditModal.disabled=false;
+    }else{
+        buttonSaveModal.disabled=true;
+        buttonEditModal.disabled=true;
+    }
+}
+function validarImgSubida(){
+    removeErrorMensajes("errorimg")
+    const img=document.getElementById("file");
+    const archivos=img.files;
+    const allowedExtensions = /(.jpg|.jpeg|.png|.gif)$/i;
+    const padre =img.parentNode;
+    if(archivos.length>0){
+        if(allowedExtensions.test(img.value)){
+            return true;
+        }else{
+            padre.appendChild(createMensajeError("Extension seleccionada no permitida","img"))
+            return false;
+        }
+    }else{
+        padre.appendChild(createMensajeError("Ingrese un archivo por favor","img"))
+        return false;
+    }
+}
+function validarNameInput(name, padre){
+    removeErrorMensajes("errorname")
+    if(name!==""){
+        return true;
+    }else{
+        padre.appendChild(createMensajeError("El nombre no debe estar vacio","name"))
+        return false;
+    }
+}
+function validarPriceInput(valor, padre){
+    removeErrorMensajes("errorprecio")
+    if(valor>0){
+        return true;
+    }else{
+        padre.appendChild(createMensajeError("Precio debe ser mayor a 0 y no estar vacio","precio"))
+        return false;
+    }
+}
+
+function recuperarTipoProducto(){
+    const lista = document.getElementById("selectTipo");
+    const opt=lista.options[lista.selectedIndex].text;
+    return opt;
+    
+}
+function saveChanges(){
+    const precio=document.getElementById("priceProduct");
+    const name=document.getElementById("nameProduct");
+    const img=document.getElementById("file");
+    const imgFiles=img.files;
+
+    const myjson={}
+    myjson.name=name.value;
+    myjson.price=precio.value;
+    const formdat= new FormData();
+
+    if(imgFiles.length>0){
+        const imgUp=imgFiles[0];
+        formdat.append("file",imgUp);
+        
+    }
+    formdat.append("id_producto", buttonEditModal.value)
+     formdat.append("name",name.value);
+     formdat.append("price",precio.value);
+     formdat.append("type",recuperarTipoProducto());
+     formdat.append('ajax', 2);
+     console.log(recuperarTipoProducto());
+
+    const xhttp = new XMLHttpRequest();
+    xhttp.open("POST", "index.php?c=productos&a=editProducto", true);
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            console.log(this.responseText);
+            const jsonObj = JSON.parse(this.responseText);
+            removeItems()
+            paintEveryProducts(jsonObj)
+        }
+    };
+    xhttp.send(formdat);
 }

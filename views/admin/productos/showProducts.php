@@ -62,7 +62,7 @@
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" id="botonEditModal" class="btn btn-primary" data-bs-dismiss="modal">Editar</button>
+            <button type="button" id="botonEditModal" class="btn btn-primary" onclick="saveChanges()" data-bs-dismiss="modal" >Editar</button>
         </div>
         </div>
     </div>

@@ -35,6 +35,26 @@ require_once 'models/ProductoModel.php';
                 echo json_encode($resultado);
             }
         }
+        public function editProducto(){
+            if ($_POST['ajax'] == 2){
+                $tipo=$_POST['type'];
+                $nombre= $_POST["name"];
+                $precio= $_POST["price"];
+                $id=$_POST["id_producto"];
+                if(isset($_FILES['file'])){
+                    $archivo=$_FILES['file']['name'];
+                    $temp = $_FILES['file']['tmp_name'];
+                    if (move_uploaded_file($temp, 'assets/resources/menu/'.$archivo)){
+                         $ruta = 'assets/resources/menu/'.$archivo;
+                         $this->model->editProductoAllData($ruta, $nombre, $precio,$tipo, $id);
+                    }
+                 }else{
+                    $this->model->editProductoData($nombre, $precio,$tipo, $id);
+                 }
+                 $resultado=$this->model->getProductos();
+                 echo json_encode($resultado);
+            }
+        }
         public function addProducto(){
             if ($_POST['ajax'] == 2){
                 if(isset($_FILES['file'])){

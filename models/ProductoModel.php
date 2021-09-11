@@ -49,6 +49,41 @@ require_once 'config/conexion.php';
             $resultados = $sentencia->fetchAll(PDO::FETCH_ASSOC);
             return $resultados;
         }
+        public function editProductoAllData($ruta, $nombre, $precio,$tipo, $id){
+            $sql="UPDATE  producto set urlImage=:ruta, `name`=:nombre, price=:precio, `type`=:tipo  where id_producto=:id and  estado = 'A'";
+            $sentencia = $this->con->prepare($sql);
+            $data=[
+                'id'=>$id,
+                'ruta'=>$ruta,
+                'nombre'=>$nombre,
+                'precio'=>$precio,
+                'tipo'=>$tipo
+            ];
+            $sentencia->execute($data);
+            //execute
+            if ($sentencia->rowCount() <= 0) {// verificar si se inserto 
+                //rowCount permite obtner el numero de filas afectadas
+                return false;
+            }
+            return true;
+        }
+        public function editProductoData($nombre, $precio,$tipo, $id){
+            $sql="UPDATE  producto set  `name`=:nombre, price=:precio, `type`=:tipo  where id_producto=:id and  estado = 'A'";
+            $sentencia = $this->con->prepare($sql);
+            $data=[
+                'id'=>$id,
+                'nombre'=>$nombre,
+                'precio'=>$precio,
+                'tipo'=>$tipo
+            ];
+            $sentencia->execute($data);
+            //execute
+            if ($sentencia->rowCount() <= 0) {// verificar si se inserto 
+                //rowCount permite obtner el numero de filas afectadas
+                return false;
+            }
+            return true;
+        }
         public function eliminarProducto($id){
             $sql="UPDATE  producto set estado='N' where id_producto=:id and  estado = 'A'";
             $sentencia = $this->con->prepare($sql);
