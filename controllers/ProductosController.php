@@ -31,6 +31,7 @@ require_once 'models/ProductoModel.php';
             $id=$data->id;
             $respuesta = $this->model->eliminarProducto($id);
             if($respuesta){
+                
                 $resultado=$this->model->getProductos();
                 echo json_encode($resultado);
             }
@@ -46,13 +47,15 @@ require_once 'models/ProductoModel.php';
                     $temp = $_FILES['file']['tmp_name'];
                     if (move_uploaded_file($temp, 'assets/resources/menu/'.$archivo)){
                          $ruta = 'assets/resources/menu/'.$archivo;
-                         $this->model->editProductoAllData($ruta, $nombre, $precio,$tipo, $id);
+                         $respuesta=$this->model->editProductoAllData($ruta, $nombre, $precio,$tipo, $id);
                     }
                  }else{
-                    $this->model->editProductoData($nombre, $precio,$tipo, $id);
+                    $respuesta=$this->model->editProductoData($nombre, $precio,$tipo, $id);
                  }
-                 $resultado=$this->model->getProductos();
-                 echo json_encode($resultado);
+                 if($respuesta){
+                    $resultado=$this->model->getProductos();
+                    echo json_encode($resultado);
+                }
             }
         }
         public function addProducto(){

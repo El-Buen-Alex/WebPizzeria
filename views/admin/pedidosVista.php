@@ -1,5 +1,9 @@
 <?php
-     session_start();
+
+    if(!isset($_SESSION)) 
+    { 
+        session_start();
+    }
     /* Si algun usuario no ha iniciado sesion */
      if(!isset($_SESSION["usuario"]["rol"])){
          header("location: index.php?c=logreg&a=index");

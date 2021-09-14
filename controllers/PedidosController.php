@@ -22,7 +22,7 @@ session_start();
         public function generarPedido(){
            
           $data = file_get_contents('php://input');
-          setcookie("listProducts", $data);
+          setcookie("listProducts", $data, time() + (60 * 20));
           var_dump ($data);
         }
 

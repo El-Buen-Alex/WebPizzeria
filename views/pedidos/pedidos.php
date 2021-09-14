@@ -1,4 +1,8 @@
 <?php
+    if(!isset($_SESSION)) 
+    { 
+        session_start();
+    }
          /* Si mi usuario es admin: */
          if(isset($_SESSION["usuario"])){
             if($_SESSION["usuario"]["rol"] == 1){
@@ -6,7 +10,6 @@
             }
          }
 ?>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>

@@ -1,14 +1,18 @@
 <!-- Adriana Zambrano Manzano -->
 <!-- Sección Inicio -->
 <?php
-     session_start();
-    /* Si algun usuario no ha iniciado sesion */
-  
-         /* Si mi usuario es admin: */
-         if($_SESSION["usuario"]["rol"] ==1){
+    if(!isset($_SESSION)) 
+    { 
+        session_start();
+    }
+        /* Si algun usuario no ha iniciado sesion */
+        /* Si mi usuario es admin: */
+    if(isset($_SESSION["usuario"]["rol"])){
+        if($_SESSION["usuario"]["rol"] ==1){
             header("location: index.php?c=logreg&a=index");
-         }
-     
+        }
+    }   
+        
 ?>
 <!DOCTYPE html>
 <html lang="es">

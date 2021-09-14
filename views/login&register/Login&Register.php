@@ -1,14 +1,17 @@
 <?php
-     session_start();
-     if(($_SESSION["usuario"]["rol"] == 1)){
-      header("location: index.php?c=admin");
-
-         
-     }else{
-         if($_SESSION["usuario"]["rol"] == 2){
-             header("location: index.php");
+      if(!isset($_SESSION)) 
+      { 
+          session_start();
+      }
+      if(isset($_SESSION["usuario"]["rol"])){
+        if(($_SESSION["usuario"]["rol"] == 1)){
+          header("location: index.php?c=admin");
+         }else{
+             if($_SESSION["usuario"]["rol"] == 2){
+                 header("location: index.php");
+             }
          }
-     }
+      }
 ?>
 <!DOCTYPE html>
 <html lang="es">

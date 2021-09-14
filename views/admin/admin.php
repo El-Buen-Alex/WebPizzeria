@@ -1,17 +1,19 @@
 <?php
-     session_start();
+    if(!isset($_SESSION)) 
+    { 
+        session_start();
+    }
     /* Si algun usuario no ha iniciado sesion */
-     if(!isset($_SESSION["usuario"]["rol"])){
-         header("location: index.php?c=logreg&a=index");
-         
-     }else{
-         /* Si mi usuario no es admin: */
-         if($_SESSION["usuario"]["rol"] !=1){
-             header("location: index.php?c=logreg&a=index");
-         }
-     }
-?>
+    if(!isset($_SESSION["usuario"]["rol"])){
+        header("location: index.php?c=logreg&a=index"); 
+    }else{
+        /* Si mi usuario no es admin: */
+        if($_SESSION["usuario"]["rol"] !=1){
+            header("location: index.php?c=logreg&a=index");
+        }
+    }
 
+?>
 <!DOCTYPE html>
 <html lang="es">
 
