@@ -36,7 +36,7 @@ require_once 'config/conexion.php';
             return $resultados;
         }
         public function getProductsByNameOrType($name){
-            $sql="select * from producto where name like :a or type like :b and  estado = 'A'";
+            $sql="select * from producto where (name like :a or type like :b) and  estado = 'A'";
             $sentencia = $this->con->prepare($sql);
             $nameLike='%'.$name.'%';
             $data=[
