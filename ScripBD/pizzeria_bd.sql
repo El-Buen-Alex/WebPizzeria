@@ -26,8 +26,29 @@ USE `pizzeria`;
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `establecimiento`
+--
+
+CREATE TABLE `establecimiento` (
+  `idestablecimiento` int(11) NOT NULL,
+  `direccion` varchar(45) NOT NULL,
+  `estado` char(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `establecimiento`
+--
+
+INSERT INTO `establecimiento` (`idestablecimiento`, `direccion`, `estado`) VALUES
+(1, 'Flor de bestion bq4', 'A'),
+(2, 'Isla Trinitaria via Perimetral km11 ', 'A');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `pedido_cabecera`
 --
+
 
 CREATE TABLE `pedido_cabecera` (
   `idpedido_cabecera` int(11) NOT NULL,
@@ -155,6 +176,13 @@ INSERT INTO `usuario` (`idUsuario`, `nombre`, `username`, `Correo`, `password`, 
 --
 
 --
+-- Indices de la tabla `establecimiento`
+--
+ALTER TABLE `establecimiento`
+  ADD PRIMARY KEY (`idestablecimiento`);
+
+
+--
 -- Indices de la tabla `pedido_cabecera`
 --
 ALTER TABLE `pedido_cabecera`
@@ -191,6 +219,13 @@ ALTER TABLE `usuario`
 --
 -- AUTO_INCREMENT de las tablas volcadas
 --
+
+--
+-- AUTO_INCREMENT de la tabla `establecimiento`
+--
+ALTER TABLE `establecimiento`
+  MODIFY `idestablecimiento` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
 
 --
 -- AUTO_INCREMENT de la tabla `pedido_cabecera`
