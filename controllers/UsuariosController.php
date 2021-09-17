@@ -51,7 +51,7 @@ class UsuariosController {
     public function redirigirRol($rolUser) {
         switch ($rolUser) {
             case 1:
-                header("location: index.php?c=admin&a=index");
+                header("location: index.php?c=productos&a=index");
                 break;
             
             case 2:

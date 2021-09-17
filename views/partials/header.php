@@ -23,9 +23,6 @@
                 <a class="enlace" href="index.php?c=pizzeria&a=index">Inicio |</a>
             <?php if(isset($_SESSION["usuario"])) { ?>
                 <?php if($_SESSION["usuario"]["rol"] == 1){ ?>
-                <a class="enlace" href="index.php?c=admin">Clientes |</a>
-                <a class="enlace" href="index.php?c=vistapedidos&a=index">Pedidos |</a>
-                <a class="enlace" href="index.php?c=vistareservas&a=index">Reservas |</a>
                 <a class="enlace" href="index.php?c=productos&a=index">Productos </a>
                 <?php }else{?>
                     <a class="enlace" href="index.php?c=pedidos">Menú |</a>
