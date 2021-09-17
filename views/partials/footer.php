@@ -13,7 +13,6 @@
                     <div class="nav_enlaces_pie">
                         <div style="text-align:center;">
                             <a class="enlace" href="index.php?c=pedidos">Menú |</a>
-                            <a class="enlace" href="/html_pages/reservas.html">Reservas |</a>
                         </div>
                     </div>
                 </nav>
@@ -31,7 +30,6 @@
                     <div class="nav_enlaces_pie">
                         <div style="text-align:center;">
                             <a class="enlace" href="index.php?c=pedidos">Menú |</a>
-                            <a class="enlace" href="/html_pages/reservas.html">Reservas |</a>
                         </div>
                     </div>
                 </nav>

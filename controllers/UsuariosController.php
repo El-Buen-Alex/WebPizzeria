@@ -19,8 +19,8 @@ class UsuariosController {
         $usuario = $this->model->buscarUsuario($user, $pass);
 
         if ($usuario == false) {
-            require_once "views/login&register/Login&Register.php";
-            echo '<script language="javascript">alert("Usuario y/o contraseña incorrectos");</script>';            
+            setcookie("userNotFound","Usuario y/o contraseña incorrectos");
+            header("location: index.php?c=logreg");
         }else{
             $this->crearSession($usuario);
         }       

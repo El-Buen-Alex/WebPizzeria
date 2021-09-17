@@ -8,10 +8,6 @@ require_once 'config/conexion.php';
 
         private $con;
         public function __construct(){
-            // $this->urlImage=$urlImage;
-            // $this->type=$type;
-            // $this->price=$price;
-            // $this->name=$name;
             $this->con = Conexion::getConexion();
         }
         public function getProductos(){

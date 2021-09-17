@@ -35,11 +35,18 @@
     <div class="forms-containerr">
       <div class="signin-signup">
 
-
         <form class="sign-in-form formLocal" id="form" action="index.php?c=usuarios&a=index" method="POST">
           <h2 style="color: #b36105; font-family: Bookman Old Style;">Ingrese los datos</h2>
           <br>
-
+          <?php
+             if (isset($_COOKIE["userNotFound"])) {
+              ?>
+              <p style="color:red;">Usuario y/o contraseña incorrectos</p>
+              <?php
+              setcookie("userNotFound", "", time()-60);     
+             }
+          ?>
+          <br>
           <div class="formulario__grupo" id="grupo__usuario">
             <div class="formulario__grupo-input input-field"> <span class="barra"></span>
               <input name="usuario" placeholder="Usuario" required>
@@ -67,9 +74,11 @@
             <p class="formulario__mensaje-exito" id="formulario__mensaje-exito">Formulario enviado exitosamente!</p>
           </div>
 
+
         </form>
 
-        <form action="index.php?c=usuarios&a=registro" class="sign-up-form formLocal" method="POST" id="form2">
+
+        <form class="sign-up-form formLocal" method="POST" id="form2">
           <h2 style="color: #b36105; font-family: Bookman Old Style;">Ingrese los datos para el registro</h2>
           <br>
 
@@ -156,13 +165,6 @@
     <div class="panels-containerr">
       <div class="panel left-panel">
         <div class="content">
-          <h3>¿No tienes cuenta?</h3>
-          <p style="font-size: 17px;">
-            Presiona en el siguiente botón para registrarte.
-          </p>
-          <button class="botonesInicio" id="sign-up-btn">
-            Registrarse
-          </button>
         </div>
         <img src="assets/resources/logo.png" class="image" alt="" />
       </div>
