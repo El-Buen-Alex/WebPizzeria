@@ -61,7 +61,7 @@ session_start();
                     $repsuesta=$this->model->cancelarPedidoDetalle($idpedido_cabecera);
                     if($repsuesta){
                         foreach($data as $product){
-                            $guardado= $this->model->guardarDetallesCompra( $product->producto, $product->cantidad, $product->precio_unitario,$idpedido_cabecera);
+                            $guardado= $this->model->guardarDetallesCompra( $product->producto, $product->cantidad, $product->precio_unitario,$idpedido_cabecera, $product->id_producto);
                          }
                          if($guardado){
                             $actualizarTotal=$this->model->ActualizarTotal($total, $idpedido_cabecera);
@@ -97,7 +97,7 @@ session_start();
                     $id_cabecera= $this->model->insertarCabeceraPedidos($total, $direccion, $id_usuario_compra, $fecha, $hora);
                     $guardado=true;
                     foreach($data as $product){
-                       $guardado= $this->model->guardarDetallesCompra( $product->producto, $product->cantidad, $product->precio_unitario, $id_cabecera);
+                       $guardado= $this->model->guardarDetallesCompra( $product->producto, $product->cantidad, $product->precio_unitario, $id_cabecera, $product->id_producto);
                     }
                     if($guardado){
                         $msj = 'Producto guardado exitosamente';
@@ -108,7 +108,8 @@ session_start();
                     }
                     setcookie("mensajeGuardado", $msj);
                     setcookie("colorGuardado", $color);
-                    header('Location:index.php?c=pedidos&a=mostrarPedidos');
+                    var_dump($data);
+                     header('Location:index.php?c=pedidos&a=mostrarPedidos');
                 }
             }
         }

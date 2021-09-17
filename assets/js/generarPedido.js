@@ -18,7 +18,8 @@ ajax_request_.open("GET", ajax_url_, true);
 ajax_request_.send();
 
 function agregarPedido() {
-    addProductOfList();
+  const id=event.target.id;
+    addProductOfList(id);
 }
 function generarPedido() {
   let resp = false;

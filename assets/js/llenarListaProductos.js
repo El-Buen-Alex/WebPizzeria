@@ -5,9 +5,11 @@ ajaxRequest.onreadystatechange = function () {
   // readyState es 4
   if (ajaxRequest.readyState == 4) {
     // Analizaos el responseText que contendrá el JSON enviado desde el servidor
-    var jsonListPro = JSON.parse(ajaxRequest.responseText);
-    listOfProducts=jsonListPro;
-    repaintElements();
+    if(ajaxRequest.responseText && (ajaxRequest.responseText!=="")){
+      var jsonListPro = JSON.parse(ajaxRequest.responseText);
+      listOfProducts=jsonListPro;
+      repaintElements();
+    }
     // La variable jsonObj ahora contiene un objeto con los datos recibidos
   }
 };

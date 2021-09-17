@@ -61,6 +61,7 @@ function createElement(element) {
 
   const button = document.createElement("button");
   button.setAttribute("type", "button");
+  button.setAttribute("id", element.id_producto);
   button.setAttribute("onClick", "agregarPedido()");
   //button.setAttribute("onClick","addProductOfList()");
   button.setAttribute(
@@ -81,13 +82,14 @@ function createElement(element) {
   return div;
 }
 
-function addProductOfList() {
+function addProductOfList(id) {
   const divPadre = event.target.parentNode.parentNode;
   const divprecio = divPadre.firstChild.nextSibling;
   const priceProduct = divprecio.getAttribute("value");
   const divNameProduct = divprecio.nextSibling;
   const nameProduct = divNameProduct.innerHTML;
   let existe = false;
+  console.log(id)
   listOfProducts.forEach((element) => {
     if (element.producto === nameProduct) {
       element.cantidad = +element.cantidad + 1;
@@ -96,7 +98,7 @@ function addProductOfList() {
     }
   });
   if (!existe) {
-    listOfProducts.push({ producto: nameProduct, precio_unitario: priceProduct, cantidad: 1 });
+    listOfProducts.push({ id_producto: id, producto: nameProduct, precio_unitario: priceProduct, cantidad: 1 });
     repaintElements();
   }
 }

@@ -46,10 +46,10 @@ require_once 'config/conexion.php';
                 }
             return $id_Cabecera;
         }
-        public function guardarDetallesCompra( $product_name, $product_cant, $product_price, $id_cabecera){
+        public function guardarDetallesCompra( $product_name, $product_cant, $product_price, $id_cabecera, $id_producto){
              //prepare
-             $sql = "INSERT INTO pedido_detalle ( producto, precio_unitario, estado,cantidad, id_pedido_cabecera) VALUES 
-             ( :producto, :precio_unitario, :estado, :cantidad, :id_pedido_cabecera)";
+             $sql = "INSERT INTO pedido_detalle ( producto, precio_unitario, estado,cantidad, id_pedido_cabecera, id_producto) VALUES 
+             ( :producto, :precio_unitario, :estado, :cantidad, :id_pedido_cabecera, :id_producto)";
              //now());
              //bind parameters
              $sentencia = $this->con->prepare($sql);
@@ -59,7 +59,8 @@ require_once 'config/conexion.php';
                      'precio_unitario' => $product_price,
                      'estado' => $estado,
                      'cantidad'=>$product_cant,
-                     'id_pedido_cabecera'=>$id_cabecera
+                     'id_pedido_cabecera'=>$id_cabecera,
+                     'id_producto'=>$id_producto
              ];
              //execute
              $sentencia->execute($data);
