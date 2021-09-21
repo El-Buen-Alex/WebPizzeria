@@ -1,6 +1,3 @@
-<!-- Grupo 3: Pincay, Rodriguez, Tacuri, Zambrano -->
-<!-- Proyecto II PARCIAL -->
-
 <?php
 require_once 'config/config.php';
 $cont= isset($_REQUEST['c'])?htmlentities($_REQUEST['c']):CONTROLADOR_PRINCIPAL;
